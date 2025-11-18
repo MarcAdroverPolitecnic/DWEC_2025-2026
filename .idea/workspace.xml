@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="338Z7fkiBw3gVYnkbx2gDsG3U3u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.Equacio2nGrau.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.UnaMoscaVolavaPerLaLLum.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Variables.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\PedraPaperTisores\assests" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Poker\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2\exercici1" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema1" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="" />
+      <created>1758700494461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758700494461</updated>
+      <workItem from="1758700496065" duration="6659000" />
+      <workItem from="1758709625259" duration="24000" />
+      <workItem from="1758882043482" duration="5619000" />
+      <workItem from="1759243355957" duration="3613000" />
+      <workItem from="1759247411318" duration="725000" />
+      <workItem from="1759302247636" duration="7938000" />
+      <workItem from="1759471588305" duration="65000" />
+      <workItem from="1759487201944" duration="5385000" />
+      <workItem from="1759907325524" duration="10750000" />
+      <workItem from="1760076803600" duration="45000" />
+      <workItem from="1760450592242" duration="7488000" />
+      <workItem from="1760513165266" duration="38000" />
+      <workItem from="1760513359739" duration="8411000" />
+      <workItem from="1760698771259" duration="3559000" />
+      <workItem from="1761042232745" duration="212000" />
+      <workItem from="1761117585117" duration="3820000" />
+      <workItem from="1761599003748" duration="677000" />
+      <workItem from="1761651958042" duration="31000" />
+      <workItem from="1761664053951" duration="8226000" />
+      <workItem from="1761721524083" duration="8657000" />
+      <workItem from="1761732508068" duration="2500000" />
+      <workItem from="1762514842549" duration="5303000" />
+      <workItem from="1762536418417" duration="14000" />
+      <workItem from="1762936158925" duration="8443000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

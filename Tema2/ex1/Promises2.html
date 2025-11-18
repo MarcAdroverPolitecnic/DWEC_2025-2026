@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>Nom: <span>Carregant...</span></p>
+    <p>Cognoms: <span>Carregant...</span></p>
+    <p>Email: <span>Carregant...</span></p>
+    <p>Gènere: <span>Carregant...</span></p>
+    <!--El gènere si es home -> Groc / si es dona -> Taronja
+        A més, ha de sortir la paraula "Masculí" si es male
+        i "Femení" si es female-->
+</div>
+
+<script>
+
+    function paintResult(result){
+        const nom = result.results[0].name.first;
+        const cognoms = result.results[0].name.last;
+        const email = result.results[0].email;
+        const genere = result.results[0].gender;
+
+        console.log(nom,cognoms,email,genere);
+
+        let genereMap = "Femení";
+        let isFemeni = true;
+        if(genere === "male"){
+            genereMap = "Masculí";
+            isFemeni = false;
+        }
+
+        document.querySelector("#app p:nth-child(1) span").innerHTML = nom;
+        document.querySelector("#app p:nth-child(2) span").innerHTML = cognoms;
+        document.querySelector("#app p:nth-child(3) span").innerHTML = email;
+        document.querySelector("#app p:nth-child(4) span").innerHTML = genereMap;
+
+        if(isFemeni){
+            document.querySelector("#app p:nth-child(4) span").style.color = "orange";
+        } else{
+            document.querySelector("#app p:nth-child(4) span").style.color = "red";
+        }
+
+    }
+    function init(){
+
+        const peticio = fetch("https://randomuser.me/api/")
+            .then(function(resposta){
+            return resposta.json();
+            })
+            .then(function(resposta){
+                console.log(resposta);
+                paintResult(resposta);
+            })
+
+
+    }
+
+
+
+    init();
+</script>
+
+</body>
+</html>

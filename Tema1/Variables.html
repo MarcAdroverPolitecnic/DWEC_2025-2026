@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        //String
+        const a = "Hola";
+        const b = 'món';
+        //Template String
+        const c = `que tal?`;
+
+        const d = a + ' ' + b + "!!!";
+        const e = `${a} ${b}!!!`;
+
+        const f = "Hola que " + "tal com " + "estàs?";
+        console.log(d,e);
+
+        //Numbers
+
+        /*
+        const x = 4;
+        const y = 4.5;
+        const z = "4";
+
+        Fer: x + y
+             x + y + z
+             x - y
+             x - y - z
+             x == z
+             x === z
+             x != z
+             x !== z
+             x < y
+             y < z
+         */
+
+        const x = 4;
+        const y = 4.5;
+        const z = "4";
+
+        console.log(x + y);
+        console.log(x + y + z);
+        console.log(x - y);
+        console.log(x - y - z);
+        console.log(x == z);
+        console.log(x === z);
+        console.log(x != z);
+        console.log(x !== z);
+        console.log(x < y);
+        console.log(y < z);
+
+
+        //Objectes Bàsics
+        //Objectes són prototípics (prototype)
+
+        const h = {
+            nom: 'Joan',
+            cognom1: 'Galmés',
+            ulls: 2
+        }
+
+        console.log(h.nom, h.cognom1, h.cognom2);
+
+        h.cognom2 = 'Riera';
+
+        console.log(h.nom, h.cognom1, h.cognom2);
+
+        //Arrays bàsics
+        const i = ["Maria", "Mireia", "Tomàs"];
+
+        //Length
+        i.length;
+
+        const j = i[2];
+
+        //Afegir un element
+        i.push("Miquel");
+
+        //Esborrar un element
+        i.pop();
+
+        //Funcions
+        //Les funcions són valors!!!!!!!!!!
+
+        const k = function (){
+            return "Hola que tal";
+        }
+
+        console.log(k);
+        console.log(k());
+
+        //2 tipus
+        //Funcions Anonimes
+        const l = function (){
+            return "Hola que tal";
+        }
+
+        function suma(a,b){
+            return a + b;
+        }
+
+        //  mana = setInterval(function(){
+        //     let j = setInterval(function(){
+        //         clearInterval(mana);
+        //     }, 1000)
+        //      console.log("Examen");
+        //  , 3000);
+
+        //let mana = 0;
+        //function examen(){
+        //    setTimeout(function (){
+        //        console.log("Examen2");
+        //        mana++;
+        //        if(mana < 3){
+        //            examen();
+        //        }
+        //    }, 1000)
+        //}
+        //examen();
+
+
+        //for(mana = 0; mana<5; mana++){
+        //    if(mana == 3){
+        //        setInterval(function(){
+        //            console.log("Examen");
+        //        }, 1000)
+        //    }
+        //}
+
+
+
+
+
+    </script>
+</body>
+</html>

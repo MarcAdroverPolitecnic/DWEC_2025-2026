@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function suma(a,b){
+        return a + b;
+    }
+    function resta(a,b){
+        return a - b;
+    }
+    function multiplica(a,b){
+        return a*b;
+    }
+    function divideix(a,b){
+        return a/b;
+    }
+    function quadratOperacio(fun,a,b){
+        const r = fun(a,b)*fun(a,b);
+        console.log(r);
+    }
+
+    quadratOperacio(suma,2,3);
+    quadratOperacio(resta,2,3);
+    quadratOperacio(multiplica,2,3);
+    quadratOperacio(divideix,2,3);
+
+    setTimeout(function(){
+        quadratOperacio(suma,2,3);
+    },3000)
+
+
+
+</script>
+
+</body>
+</html>

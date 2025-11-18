@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="app">
+
+<script>
+//PROMPT -> varaible = prompt("missatge que imprimeix") (guarda el que introdueix l'usuari dins variable)
+
+//FER RANDOM -> let opcio = Math.floor(Math.random() * OPCIONS.length); (en aquest cas es 3)
+
+/*
+        const app = document.querySelector('#app'); (guardam element amb id de app dins la variable app)
+
+        const pJugador = document.createElement('p');
+        pJugador.textContent = `Jugador: ${jugador}`;
+
+        const pMaquina = document.createElement('p');
+        pMaquina.textContent = `Maquina: ${maquina}`;  (crea dos elements p i assigna el valor de la seva jugada)
+
+        app.appendChild(pJugador);
+
+        app.appendChild(maquina);  (afegeix els elements creats dins app)
+
+
+// app.innerHTML serveix per a cambiar el contingut de app
+
+// const img = document.createElement("img"); crea un element imatge anomenat img
+
+//per agragar estils a un element, usar nomElement.style. ...
+
+/* (Exercici prompt o teclat, a elecció del'usuari)
+
+        let mode = "Prompt"; // Mode per defecte
+        let marcador = { jugador: 0, maquina: 0 };
+        let ranking = [];
+
+        const selectMode = document.createElement("select");
+        const optPrompt = document.createElement("option");
+        optPrompt.value = "Prompt";
+        optPrompt.textContent = "Prompt";
+        const optTeclat = document.createElement("option");
+        optTeclat.value = "Teclat";
+        optTeclat.textContent = "Teclat";
+        selectMode.append(optPrompt, optTeclat);
+
+        selectMode.addEventListener("change", (e) => {
+          mode = e.target.value;
+          alert(`Mode canviat a: ${mode}`);
+        });
+
+        // Mode teclat
+        document.addEventListener("keydown", (e) => {
+          if (mode !== "Teclat") return;
+          const tecla = e.key.toLowerCase();
+          if (tecla === "r" || tecla === "p" || tecla === "s") {
+            let jugador;
+            if (tecla === "r") jugador = "pedra";
+            if (tecla === "p") jugador = "paper";
+            if (tecla === "s") jugador = "tisores";
+            jugar(jugador);
+          }
+});
+        CONTADOR
+
+
+    function init(){
+        const app = document.querySelector('#app');
+        const input = document.createElement("input");
+        input.type = "number";
+
+        const buttonGo = document.createElement("button");
+        buttonGo.innerText = "Go";
+        buttonGo.addEventListener("click", function(){
+            const countdown = setInterval(function(){
+                let valor = input.value;
+                valor--;
+
+                if(valor === 0){
+                    valor = "SORPRESA";
+                    clearInterval(countdown);
+                }
+                input.value = valor;
+                result.innerText = valor;
+            }, 1000)
+        })
+
+        const result = document.createElement("p");
+
+        app.appendChild(input);
+        app.appendChild(buttonGo);
+        app.appendChild(result);
+
+
+        EXERCICI CANÇO
+
+
+        let canco = "Una mosca volava per la llum";
+        canco = canco.toLowerCase();
+
+        canco = canco.split("");
+
+        let vocals = "aeiou".split("");
+
+        for (let i = 0; i < vocals.length; i++) {
+            let resultat = "";
+            for (let j = 0; j < canco.length; j++) {
+                if(vocals.includes(canco[j])) {
+                    resultat += vocals[i];
+                }else {
+                    resultat += canco[j];
+                }
+            }
+            console.log(`Amb la ${vocals[i]}: ${resultat}`);
+        }
+
+        }
+
+
+        POKER
+
+        var numeros = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king'];
+    var pals = ['spades','diamonds','hearts','clubs'];
+
+    function Card(numero, pal){
+        this.numero = numero;
+        this.pal = pal;
+    }
+
+    function parella(ma){
+        for(var i=0; i<ma.length; i++){
+            for(var j= i+1; j<ma.length; j++){
+                if(ma[i].numero === ma[j].numero){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function jugar(){
+        var url = new URL(document.location);
+        var trampes = url.searchParams.get("trampes");
+
+        var baralla = [];
+        var jugador = [];
+
+        //Baralla amb 52 cartes
+        for(var i=0; i<pals.length; i++){
+            for(var j=0; j<numeros.length; j++){
+                baralla.push(new Card(numeros[j],pals[i]));
+            }
+        }
+
+
+            > 0 a > b
+            < 0 a < b
+            = 0 a = b
+
+    baralla.sort(function(){
+
+        0.8 - 0.5 > 0
+        0.4 - 0.5 < 0
+
+        return Math.random() - 0.5;
+    });
+
+    //Repartim
+    for(var i=0; i < 5; i++){
+        jugador.push(baralla[i]);
+    }
+
+    //Pintam
+    var app = document.querySelector("#app");
+    app.innerHTML = "<button onclick=\"jugar()\">Refrescar jugada</button>";
+
+    for(var i=0; i<jugador.length; i++){
+        var carta = jugador[i].numero+"_of_"+jugador[i].pal+".png";
+        app.innerHTML += '<img style="width:100px" src="cards/'+ carta+'">';
+    }
+
+    //Comprovació de guanyar
+    if(trampes==='true'){
+        app.innerHTML += '<p>Has guanyat amb Escala reial!</p>';
+
+    } else {
+        if (parella(jugador)) {
+            app.innerHTML += '<p>Has guanyat amb Parella</p>';
+        }
+    }
+
+    }
+
+      POKER PART 2
+
+          var pokerWindow;
+    var trampes = prompt("Vols fer trampes?");
+    var trampesActivades = false;
+    var txt = "Ets molt honrat, segur que perdràs!";
+
+    if(trampes !== null && trampes !== undefined && trampes.toUpperCase() === 'SI'){
+        trampesActivades = true;
+        txt = "Ah... com que ets trampós? Anem a jugar fàcil."
+    }
+
+    function jugar(){
+        pokerWindow = window.open("./poker.html?trampes="+trampesActivades,"PokerWindow","width=800,height=300,modal=yes")
+        pokerWindow.focus();
+    }
+
+    function tancarJoc(){
+        if(pokerWindow!=null && pokerWindow!=undefined){
+            pokerWindow.close();
+        }
+    }
+
+    function tancar(){
+        tancarJoc();
+        this.window.close();
+    }
+
+
+        POKER VERSIO 1
+
+
+                // MODEL
+        function Card(numero, pal){
+            this.numero = numero;
+            this.pal = pal;
+        }
+
+        // SERVICE
+        function parella(ma){
+            for(let i=0; i<ma.length; i++){
+                for(let j= i+1; j<ma.length; j++){
+                    if(ma[i].numero === ma[j].numero){
+                        return true;
+                    }
+                }
+            }
+                return false;
+        }
+
+        function initBaralla(pals,numeros){
+            const baralla = [];
+
+
+            //Baralla amb 52 cartes
+            for(let i=0; i<pals.length; i++){
+                for(let j=0; j<numeros.length; j++){
+                    baralla.push(new Card(numeros[j],pals[i]));
+                }
+            }
+
+    baralla.sort(function(){
+
+        return Math.random() - 0.5;
+    });
+
+    return baralla;
+    }
+
+    function repartirCartes(baralla){
+        const jugador = [];
+        for(let i=0; i < 5; i++){
+            jugador.push(baralla[i]);
+        }
+        return jugador;
+    }
+
+    function comprovarGuanyar(jugada){
+        pintarResultat(parella(jugada));
+    }
+
+    // PAINT
+    function pintarPoker(jugador){
+        const app = document.querySelector("#app");
+        app.innerHTML = "<button onclick=\"init()\">Play!</button>";
+
+        for(let i=0; i<jugador.length; i++){
+            const carta = jugador[i].numero+"_of_"+jugador[i].pal+".png";
+            app.innerHTML += '<img style="width:100px" src="assets/'+ carta+'">';
+        }
+
+    }
+
+    function pintarResultat(resltat){
+        const app = document.querySelector("#app");
+        if (resltat){
+            app.innerHTML += '<p>Has guanyat amb Parella</p>';
+        } else {
+            app.innerHTML += '<p>Has perdut</p>';
+        }
+
+    }
+
+    // INIT
+    function init(){
+        const numeros = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king'];
+        const pals = ['spades','diamonds','hearts','clubs'];
+
+        const baralla = initBaralla(pals,numeros);
+        const jugada = repartirCartes(baralla);
+        pintarPoker(jugada);
+        comprovarGuanyar(jugada);
+    }
+
+
+          mana = setInterval(function(){
+             let j = setInterval(function(){
+                 clearInterval(mana);
+             }, 1000)
+              console.log("Examen");
+          , 3000)
+        let mana = 0;
+        function examen(){
+            setTimeout(function (){
+                console.log("Examen2");
+                mana++;
+                if(mana < 3){
+                    examen();
+                }
+            }, 1000)
+        }
+        examen();
+
+
+*/
+</script>
+
+</body>
+</html>

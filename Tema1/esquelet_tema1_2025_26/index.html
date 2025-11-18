@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <head>
+        <title>Examen Javascript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/tv.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="title">
+            <h1>Examen Vanilla JS</h1>
+        </div>
+        <div id="timer">5</div>
+        <div id="screen">
+            <img src="img/tv.png" alt="tv" id="tv">
+            <video autoplay loop id="program">
+                <source src="videos/alldayfilms.webm" type="video/webm" id="program-source">
+            </video>
+        </div>
+        <div id="cabinet">
+            <img src="img/tvcabinet.png" alt="cabinet" id="tvcabinet">
+
+            <div id="remote">
+                <button id="anterior" class="button">&lt;&lt;</button>
+                <button id="play" class="button">Play</button>
+                <button id="stop" class="button">Stop</button>
+                <button id="seguent" class="button">&gt;&gt;</button>
+            </div>
+        </div>
+
+
+        <script>
+
+            let haPagat = false;
+
+
+            //INIT
+            function init(){
+
+                let canals = ["videos/alldayfilms.webm", "videos/kidstv.webm", "videos/natureplus.webm", "videos/sportstv.webm",
+                    "videos/technologytoday.webm", "videos/xtremsports.webm"];
+                //Per a afegir mes canals, simplement ficar-ho dins la carpeta de videos i posar el nom dins l'array.
+
+                funcionamentBotons(canals);
+                botonsAdicionals();
+            }
+
+            //MODEL
+            function funcionamentBotons(canals){
+                let contador = 0;
+                let vid = document.getElementById("program");
+                vid.autoplay = false;
+
+                let botoPlay = document.querySelector("#play");
+                botoPlay.addEventListener('click', function() {
+                    vid.play();
+                    subscripcio();
+                    if(!haPagat) {
+                        setTimeout(function () {
+                            vid.pause();
+                        }, 5000);
+                    }
+                });
+
+                let botoStop = document.querySelector("#stop");
+                botoStop.addEventListener('click', () => {vid.pause()});
+
+                let botoEnvant = document.querySelector("#seguent");
+
+                let botoEnrrere = document.querySelector("#anterior");
+
+                botoEnvant.addEventListener('click', function () {
+                    contador = canalSeguent(contador, canals, vid);
+                });
+
+                botoEnrrere.addEventListener('click', function () {
+                    contador = canalEnrrere(contador, canals, vid);
+                });
+            }
+
+            function canalSeguent(contador, canals, vid){
+                contador++;
+
+                if(contador === canals.length){
+                    contador = 0;
+                }
+                vid.src = canals[contador];
+
+                return contador;
+            }
+
+            function canalEnrrere(contador, canals, vid){
+                if(contador === 0){
+                    contador = canals.length -1;
+                } else contador--;
+
+                vid.src = canals[contador];
+
+                return contador;
+            }
+
+
+            //VISTA
+            function botonsAdicionals() {
+                const app = document.querySelector("#remote");
+
+                let finestraNova;
+
+                const botoFinestra = document.createElement("button");
+                const botoTancarAjuda = document.createElement("button");
+
+                botoFinestra.innerHTML = `Finestra Pagament`;
+                botoFinestra.addEventListener('click', () => {
+                    finestraNova = window.open("https://paypal.com", "_blank", "width=600,height=400");
+                });
+
+                botoTancarAjuda.innerHTML =`Tancar PayPal`;
+                botoTancarAjuda.addEventListener('click', () => {
+                    finestraNova.close();
+                });
+
+                app.appendChild(botoFinestra);
+                app.appendChild(botoTancarAjuda);
+            }
+
+            function subscripcio(){
+                let valor = 5;
+                const countdown = setInterval(function(){
+                const valorTimer = document.querySelector("#timer");
+                valor--;
+
+                    if(valor === 0){
+                        valor = "S'ha acabat la suscripció";
+                        clearInterval(countdown);
+                    }
+
+                valorTimer.value = valor;
+                valorTimer.innerText = valor;
+            }, 1000)
+            }
+            init();
+        </script>
+    </body>
+</html>

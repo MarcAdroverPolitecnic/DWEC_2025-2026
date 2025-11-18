@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Joc del Penjat</title>
+
+</head>
+<body id="body">
+    <script>
+
+        const paraulaEndivinar = "mario";
+
+        let paraulaTapada = [];
+
+        for (let i = 0; i < paraulaEndivinar.length; i++) {
+            paraulaTapada.push("_");
+        }
+
+        const lletres = ["a", "b", "c", "d", "e", "f", "g",
+            "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        let fallos = 1;
+
+        const homePenjat = document.createElement("IMG");
+        const paraula = document.createElement("p");
+
+        init();
+
+        function init(){
+            paraula.innerHTML = paraulaTapada.join(" ");
+            document.querySelector("#body").appendChild(paraula);
+
+            homePenjat.src = urlHomePenjat(fallos);
+            document.querySelector("#body").appendChild(homePenjat);
+
+            inicialitzarBotons();
+        }
+
+        function joc(boto) {
+            const lletra = boto.innerHTML;
+            let correcte = false;
+
+            for (let i = 0; i < paraulaEndivinar.length; i++) {
+                if(paraulaEndivinar[i] === lletra){
+                    paraulaTapada[i] = lletra;
+                    correcte = true;
+                }
+            }
+            paraula.innerHTML = paraulaTapada.join(" ");
+
+            if(correcte){
+                boto.style.backgroundColor = "lightgreen"
+            } else {
+                boto.style.backgroundColor = "red"
+                fallos++;
+                homePenjat.src = urlHomePenjat(fallos);
+            }
+
+            boto.disabled = true;
+
+            comprovacioVictoria(fallos);
+
+
+        }
+
+        function comprovacioVictoria(fallos){
+            let paraulaTapadaFormat = paraulaTapada.toString().replaceAll(",", "");
+            if(paraulaTapadaFormat === paraulaEndivinar){
+                alert("Has guanyat");
+                desactivarBotons();
+            } else if (fallos === 7){
+                alert("Has perdut");
+                desactivarBotons();
+            }
+        }
+
+        function urlHomePenjat(a){
+            let url = "";
+            url += `assets/${a}.PNG`;
+            return url;
+        }
+
+        function desactivarBotons(){
+            const totsBotons = document.querySelectorAll("button");
+            totsBotons.forEach(boto => {boto.disabled = true;});
+        }
+
+        function inicialitzarBotons(){
+            for(let i = 0; i < lletres.length; i++){
+                const botoJugar = document.createElement("button");
+                botoJugar.innerHTML =`${lletres[i]}`;
+                botoJugar.setAttribute('onclick', 'joc(this)');
+                body.appendChild(botoJugar);
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="jugar()">Play</button>
+<button onclick="tancarJoc()">Tancar la finestra del joc</button>
+<button onclick="tancar()">Tancar tot el programa</button>
+<script>
+    var pokerWindow;
+    var trampes = prompt("Vols fer trampes?");
+    var trampesActivades = false;
+    var txt = "Ets molt honrat, segur que perdràs!";
+
+    if(trampes !== null && trampes !== undefined && trampes.toUpperCase() === 'SI'){
+        trampesActivades = true;
+        txt = "Ah... com que ets trampós? Anem a jugar fàcil."
+    }
+
+    function jugar(){
+        pokerWindow = window.open("./poker.html?trampes="+trampesActivades,"PokerWindow","width=800,height=300,modal=yes")
+        pokerWindow.focus();
+    }
+
+    function tancarJoc(){
+        if(pokerWindow!=null && pokerWindow!=undefined){
+            pokerWindow.close();
+        }
+    }
+
+    function tancar(){
+        tancarJoc();
+        this.window.close();
+    }
+
+    alert(txt);
+    jugar();
+</script>
+</body>
+</html>

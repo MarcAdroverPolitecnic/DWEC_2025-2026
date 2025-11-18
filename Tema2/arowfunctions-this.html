@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="boto1">Click boto1</button>
+<button id="boto2">Click boto2</button>
+
+<script>
+
+    //L'scope del this canvia si es usat en una funcio regular o arrow function
+    //Funcions Regulars -> INSTANCIA
+    document.querySelector("#boto1").addEventListener("click", function(){
+        console.log(this);
+        this.style.backgroundColor = "red";
+    })
+
+    //Arrow -> DEFINICIO
+    document.querySelector("#boto2").addEventListener("click", () =>{
+        console.log(this);
+        this.style.backgroundColor = "blue";
+    })
+</script>
+
+</body>
+</html>

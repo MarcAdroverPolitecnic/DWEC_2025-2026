@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+
+    const pals = ['diamants', 'trebols', 'cors', 'piques'];
+    const nombres = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'As'];
+
+    //Model
+    function Carta(nombre, pal){
+        this.nombre = nombre;
+        this.pal = pal;
+    }
+
+    //Model de negoci
+    function innitCartes(){
+
+        const cartes = [];
+        for(const pal of pals){
+            for(const nombre of nombres){
+                cartes.push(new Carta(nombre, pal));
+            }
+        }
+        return cartes;
+    }
+
+
+    function mix(cartes){
+        let cartesImprimir = [];
+        for(let i = 0; i < 5; i++){
+            let cartaAleatoria = Math.floor(Math.random() * cartes.length);
+            cartesImprimir.push(cartes[cartaAleatoria]);
+            cartes.splice(cartaAleatoria ,1);
+        }
+        return cartesImprimir;
+
+    }
+
+    function comprovarParelles(cartes){
+        const cartesCheck = [];
+        for(let i = 0; i < cartes.length; i++){
+            if(cartesCheck.includes(cartes[i])){
+                return true;
+            }
+            cartesCheck.push(cartes[i].nombre);
+        }
+        return false;
+    }
+
+    function jugar(cartesAll){
+
+        const cartesJoc = mix(cartesAll);
+
+        const isWin = comprovarParelles(cartesJoc);
+
+        pintarJoc(isWin);
+    }
+
+    //Vista
+    function urlCarta(carta){
+        let url = "";
+        url += 'assets/';
+
+        switch(carta.nombre){
+            case 'J': url += 'jack'; break;
+            case 'Q': url += 'queen'; break;
+            case 'K': url += 'king'; break;
+            case 'As': url += 'ace'; break;
+            default: url += carta.nombre; break;
+        }
+
+        url += '_of_';
+        switch(carta.pal){
+            case 'diamants': url += 'diamonds';  break;
+            case 'trebols': url += 'clubs'; break;
+            case 'cors': url += 'hearts'; break;
+            case 'piques': url += 'spades'; break;
+        }
+        url += '.png';
+        return url;
+    }
+
+    function pintarJoc(cartes, isWin){
+        const app = document.querySelector("#app");
+        const botoJugar = document.createElement('BUTTON');
+        botoJugar.innerHTML = 'Jugar';
+        botoJugar.setAttribute('onclick', 'jugar()');
+        app.appendChild(botoJugar);
+
+        for (const carta of cartes){
+            const carta1 = document.createElement("IMG");
+            carta1.src = urlCarta(carta);
+            carta1.alt = `${carta.nombre} de ${carta.pal}`;
+            document.querySelector("#app").appendChild(carta1);
+        }
+        const resultat = document.createElement('P');
+        if(isWin){
+            p.innerHTML = "Has guanyat!";
+        }else {
+            p.innerHTML = "Has perdut!";
+        }
+        app.appendChild(resultat);
+
+    }
+
+    function init(){
+        const cartesAll = innitCartes();
+        jugar(cartesAll)
+    }
+
+
+    init();
+
+</script>
+
+</body>
+</html>

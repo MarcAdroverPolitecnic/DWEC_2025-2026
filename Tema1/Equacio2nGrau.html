@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+
+        for(let a = -5; a<= 5; a++){
+            for(let b = -3; b<= 3; b++){
+                for(let c = 0; c<= 4; c++){
+                    console.log(`a:${a} b:${b} c:${c}`, equacio2nGrau(a,b,c));
+                }
+            }
+        }
+
+        function equacio2nGrau(a, b, c) {
+            const b2 = Math.pow(b,2);
+            const ac4 = 4 * a * c;
+            const sqrt = Math.sqrt(b2 - ac4);
+
+            const denominador = 2 * a;
+
+            const resultat1 = (-b + sqrt) / denominador;
+            const resultat2 = (-b - sqrt) / denominador;
+
+            resultat = [];
+
+            if(!isNaN(resultat1) && isFinite(resultat1)){
+                resultat.push(resultat1);
+            }
+
+            if(!isNaN(resultat2) && isFinite(resultat2) && resultat1 !== resultat2){
+                resultat.push(resultat2);
+            }
+
+
+            return resultat;
+        }
+
+
+    </script>
+</body>
+</html>

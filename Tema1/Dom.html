@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <div id="div1" class="groc">
+        <p onclick="alert('div1')">Hola</p>
+        <p>Adeu</p>
+    </div>
+    <div id="div2" class="vermell">
+        <p>Hola</p>
+        <p>Adeu</p>
+    </div>
+    <div class="groc vermell">
+        <p>Hola</p>
+    </div>
+    <div>
+        <p>Hola</p>
+    </div>
+</main>
+
+<script>
+/*//Tots els elements amb la classe "groc" siguin de color "groc"
+    const groc = document.querySelector(".groc");
+    groc.style.color = "yellow";                    //Aquest nomes selecciona es primer
+    groc.style.backgroundColor = "black";
+
+    const grocs = document.querySelectorAll(".groc");
+    for (let i = 0; i < grocs.length; i++) {
+        grocs[i].style.color = "yellow";            //Aquest selecciona tant el primer com el darrer element
+        grocs[i].style.backgroundColor = "blue";
+    }*/
+
+ //El darrer element amb la classe vermell de color "vermell"
+/*
+    const vermell = document.querySelectorAll(".vermell");
+    vermell[vermell.length - 1].style.color = "red";
+ */
+ //L'element amb la classe "groc" i "vermell" de color "verd"
+
+    //const verd = document.querySelector(".groc.vermell").style.color = "green";
+
+ //El segon element que tengui la propietat "class" de color "rosa"
+
+    //const rosa = document.querySelector("[class]:nth-child(2)").style.color = "pink";
+/*
+    document.querySelector('#div2 p').addEventListener('click', function () {alert('div2')})
+*/
+ //Volem eliminar Adeu.
+ // Opció 1: InnerHTML
+
+ /*   document.querySelector('#div1').innerHTML = `<p onclick="alert('div1')"> Hola </p>`;
+    document.querySelector('#div2').innerHTML = "<p>Hola</p>";
+    //IMPORTANT: TORNAR A AFEGIR LISTENER
+    document.querySelector("#div2 p").addEventListener('click', function(){alert('div2');})
+*/
+ //Opció 2 - Nodes
+
+    const div1 = document.querySelector("#div1");
+    const fillsDiv1 = div1.children;
+    div1.removeChild(fillsDiv1[1]);     //En aquest cas elimina "Adeu"
+
+    console.log(fillsDiv1);
+
+
+</script>
+</body>
+</html>

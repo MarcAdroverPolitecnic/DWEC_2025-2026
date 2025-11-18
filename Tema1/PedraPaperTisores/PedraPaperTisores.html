@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    const OPCIONS = ['pedra', 'paper', 'tisores'];
+
+    function askPlayers(){
+
+        let isValid = false;
+        let choice;
+
+        while(!isValid){
+            choice = prompt('Introdueix: Pedra, Paper o Tisores').toLowerCase();
+
+            if(!OPCIONS.includes(choice)) {
+                alert("Has de triar opcio valida");
+            } else{
+                isValid = true;
+            }
+        }
+        return choice;
+
+    }
+
+// 0 -> Empat / 1 -> Guanyar / -1 -> Perdre
+    function jugar(jugador, maquina){
+        if(maquina === jugador){
+            return "Empat";
+        } else if((jugador === 'pedra' && maquina === 'tisores')
+            || (jugador === 'paper' && maquina === 'pedra')
+            || (jugador === 'tisores' && maquina === 'paper')){
+            return "Has guanyat";
+        } else {
+            return "Has perdut";
+        }
+    }
+
+    function init(){
+        const player = askPlayers();
+        const maquina = opcioMaquina();
+
+        const game = jugar(player, maquina);
+        paintResult(player, maquina, game);
+        botoAjuda();
+    }
+
+    function opcioMaquina(){
+        let opcio = Math.floor(Math.random() * OPCIONS.length);
+        console.log(OPCIONS[opcio]);
+        return (OPCIONS[opcio]);
+    }
+
+    function paintResult(jugador, maquina, resultat){
+        console.log(jugador, maquina, resultat);
+        const app = document.querySelector('#app');
+        app.innerHTML = '';
+
+        const imgPlayer = passarMa(jugador);
+        const imgMaquina = passarMa(maquina);
+
+        const pJugador = document.createElement('p');
+        pJugador.textContent = `Jugador: ${jugador}`;
+
+        const pMaquina = document.createElement('p');
+        pMaquina.textContent = `Maquina: ${maquina}`;
+
+        const pResultat = document.createElement('p');
+        pResultat.textContent = `Resultat: ${resultat}`;
+
+        app.appendChild(pJugador);
+        app.appendChild(imgPlayer);
+        app.appendChild(pMaquina);
+        app.appendChild(imgMaquina);
+        app.appendChild(pResultat);
+    }
+
+
+    function maQueToca(ma){
+        return `assets/${ma}.png`;
+    }
+
+
+    function passarMa(ma){
+        const img = document.createElement("img");
+        if(ma === 'pedra'){
+            img.src = maQueToca("hand0");
+        } else if (ma === 'paper'){
+            img.src = maQueToca("hand5");
+        } else {
+            img.src = maQueToca("hand2");
+        }
+        img.addEventListener("mouseenter", () => {
+            img.dataset.originalSrc = img.src;
+            img.src = `assets/hand5.png`
+        });
+
+        img.addEventListener("mouseleave", () => {
+            if (img.dataset.originalSrc) {
+                img.src = img.dataset.originalSrc;
+            };
+        });
+
+        img.style.width = "300px";
+        return img;
+    }
+
+    function botoAjuda(){
+        let nuevaVentana;
+        const botoJugar = document.createElement("button");
+        botoJugar.innerHTML =`Ajuda`;
+        botoJugar.addEventListener('click', () => {
+            nuevaVentana = window.open("", "_blank", "width=600,height=400");
+
+            nuevaVentana.document.write("<p>Vaja puto tonto si no saps  jugar a pedra, paper i tisores</p>");
+
+        });
+        app.appendChild(botoJugar);
+
+        const botoTancarAjuda = document.createElement("button");
+        botoTancarAjuda.innerHTML =`TancarAjuda`;
+        botoTancarAjuda.addEventListener('click', () => {
+            nuevaVentana.close();
+        });
+        app.appendChild(botoTancarAjuda);
+
+        const botoPolitecnic = document.createElement("button");
+        botoPolitecnic.innerHTML =`Politecnic`;
+        botoPolitecnic.addEventListener('click', () => {
+            nuevaVentana = window.open("https://politecnicllevant.cat", "_blank");
+        })
+        app.appendChild(botoPolitecnic);
+
+    }
+
+    function tancarAjuda(){
+        const botoTancarAjuda = document.createElement("button");
+        botoTancarAjuda.innerHTML =`TancarAjuda`;
+        botoTancarAjuda.addEventListener('click', () => {
+
+        })
+    }
+
+    init();
+</script>
+
+</body>
+</html>

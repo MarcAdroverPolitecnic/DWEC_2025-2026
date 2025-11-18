@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poker</title>
+</head>
+
+<body>
+<div id="app"></div>
+<script>
+    // MODEL
+    function Card(numero, pal){
+        this.numero = numero;
+        this.pal = pal;
+    }
+
+    // SERVICE
+    function parella(ma){
+        for(let i=0; i<ma.length; i++){
+            for(let j= i+1; j<ma.length; j++){
+                if(ma[i].numero === ma[j].numero){
+                    return true;
+                }
+            }
+        }
+            return false;
+    }
+
+    function initBaralla(pals,numeros){
+        const baralla = [];
+
+
+        //Baralla amb 52 cartes
+        for(let i=0; i<pals.length; i++){
+            for(let j=0; j<numeros.length; j++){
+                baralla.push(new Card(numeros[j],pals[i]));
+            }
+        }
+
+        /*
+        > 0 a > b
+        < 0 a < b
+        = 0 a = b
+         */
+        baralla.sort(function(){
+            /*
+            0.8 - 0.5 > 0
+            0.4 - 0.5 < 0
+             */
+            return Math.random() - 0.5;
+        });
+
+        return baralla;
+    }
+
+    function repartirCartes(baralla){
+        const jugador = [];
+        for(let i=0; i < 5; i++){
+            jugador.push(baralla[i]);
+        }
+        return jugador;
+    }
+
+    function comprovarGuanyar(jugada){
+        pintarResultat(parella(jugada));
+    }
+
+    // PAINT
+    function pintarPoker(jugador){
+        const app = document.querySelector("#app");
+        app.innerHTML = "<button onclick=\"init()\">Play!</button>";
+
+        for(let i=0; i<jugador.length; i++){
+            const carta = jugador[i].numero+"_of_"+jugador[i].pal+".png";
+            app.innerHTML += '<img style="width:100px" src='+ carta+'"assets">';
+        }
+
+    }
+
+    function pintarResultat(resltat){
+        const app = document.querySelector("#app");
+        if (resltat){
+            app.innerHTML += '<p>Has guanyat amb Parella</p>';
+        } else {
+            app.innerHTML += '<p>Has perdut</p>';
+        }
+
+    }
+
+    // INIT
+    function init(){
+        const numeros = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king'];
+        const pals = ['spades','diamonds','hearts','clubs'];
+
+        const baralla = initBaralla(pals,numeros);
+        const jugada = repartirCartes(baralla);
+        pintarPoker(jugada);
+        comprovarGuanyar(jugada);
+    }
+    init()
+</script>
+</body>
+</html>

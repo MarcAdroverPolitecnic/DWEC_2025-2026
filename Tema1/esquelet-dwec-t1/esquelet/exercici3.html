@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Examen JS Vanilla</title>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Butterfly+Kids');
+
+        body {
+            background-color: #333;
+            font-family: 'Butterfly Kids', cursive;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        canvas {
+            font-family: 'Butterfly Kids', cursive;
+        }
+
+        button {
+            font-family: 'Butterfly Kids', cursive;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>LES HORES</h1>
+    </header>
+    <main>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <input type="hidden" value="8" id="hours">
+        <input type="hidden" value="35" id="minutes">
+        <input type="hidden" value="55" id="seconds">
+    </main>
+
+    <script src="clock.js"></script>
+    <script>
+        let hors = document.querySelector('#hours');
+        hors.type = "number";
+        hors.min = 1;   // valor mínim
+        hors.max = 12;  // valor màxim
+
+        hors.addEventListener('input', () => {
+            let valor = Number(hors.value);
+
+            if (valor < 1 || valor > 12 || isNaN(valor)) {
+                hors.style.color = "red";
+                alert("Error: el valor ha de ser entre 1 i 12");
+            } else {
+                hors.style.borderColor = "";
+                drawClock();
+            }
+        });
+
+        drawClock();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        let canco = "Una mosca volava per la llum";
+        canco = canco.toLowerCase();
+
+        canco = canco.split("");
+
+        let vocals = "aeiou".split("");
+
+        for (let i = 0; i < vocals.length; i++) {
+            let resultat = "";
+            for (let j = 0; j < canco.length; j++) {
+                if(vocals.includes(canco[j])) {
+                    resultat += vocals[i];
+                }else {
+                    resultat += canco[j];
+                }
+            }
+            console.log(`Amb la ${vocals[i]}: ${resultat}`);
+        }
+
+
+
+    </script>
+
+</body>
+</html>

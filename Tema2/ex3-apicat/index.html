@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+
+
+<button id="boto1">Pagina Seguent</button>
+<button id="boto2">Pagina Anterior</button>
+
+<!--script src="model/models.js"></script>
+<script src="service/services.js"></script>
+<script src="view/view.js"></script-->
+<script type = "module">
+    import {getCats} from "./service/services.js";
+    import {printCat} from "./view/view.js";
+
+
+    function init() {
+        getCats(0).then(function (cats){
+            for (let cat of cats){
+                printCat(cat)
+            }
+        })
+    }
+
+    init()
+
+</script>
+</body>
+</html>

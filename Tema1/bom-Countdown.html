@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown</title>
+</head>
+
+<body>
+<div id="app"></div>
+<script>
+    function init(){
+        const app = document.querySelector('#app');
+        const input = document.createElement("input");
+        input.type = "number";
+
+        const buttonGo = document.createElement("button");
+        buttonGo.innerText = "Go";
+        buttonGo.addEventListener("click", function(){
+            const countdown = setInterval(function(){
+                let valor = input.value;
+                valor--;
+
+                if(valor === 0){
+                    valor = "SORPRESA";
+                    clearInterval(countdown);
+                }
+                input.value = valor;
+                result.innerText = valor;
+            }, 1000)
+        })
+
+        const result = document.createElement("p");
+
+        app.appendChild(input);
+        app.appendChild(buttonGo);
+        app.appendChild(result);
+
+    }
+
+    init();
+</script>
+
+</body>
+</html>

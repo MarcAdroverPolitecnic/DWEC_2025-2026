@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+</head>
+<body>
+
+<script>
+    function getRndInteger(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function prova(time){
+        const promesa = new Promise(function (res, rej) {
+            setTimeout(function () {
+                const r = getRndInteger(1,10)
+                if (r%2 === 0){
+                    res("Hola")
+                } else {
+                    rej("Adeu")
+                }
+            }, time)
+        }).then(function (result){
+            console.log("Resultat OK",result)
+        }).catch(function (result) {
+            console.log("Resultat KO",result)
+        })
+
+        console.log("Promesa", promesa)
+    }
+    prova(1000);
+    prova(5000)
+    prova(3 000);
+
+</script>
+
+</body>
+</html>

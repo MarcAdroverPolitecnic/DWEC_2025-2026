@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>Nom: <span>Carregant...</span></p>
+    <p>Cognoms: <span>Carregant...</span></p>
+    <p>Email: <span>Carregant...</span></p>
+    <p>Gènere: <span>Carregant...</span></p>
+    <!--El gènere si es home -> Groc / si es dona -> Taronja
+        A més, ha de sortir la paraula "Masculí" si es male
+        i "Femení" si es female-->
+</div>
+<!-- Aquesta es la manera classica de funcionament. Amb aquesta implementacio es molt important l'ordre d'importacio
+<script src="model/models.js"></script>
+<script src="service/services.js"></script>
+<script src="view/view.js"></script>
+-->
+<script type="module">
+
+    import {getPersona} from './service/services.js'
+    import {paintResult} from './view/view.js'
+
+    function init(){
+        getPersona().then(function(persona){
+            //resposta = JSON de randomuser -> Persona
+            paintResult(persona);
+        })
+    }
+
+
+    init();
+</script>
+
+</body>
+</html>

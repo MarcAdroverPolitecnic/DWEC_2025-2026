@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const familiaGalmes = ["pare", "mare", "fill", "filla"];
+    const familiaDuran = ["pare", "mare", "fill", "filla"];
+    const familiaSastre = ["pare", "mare", "fill", "filla_gran", "filla_petita"];
+
+    const tasquesGalmes = ["rentadora", "cuina", "bany"];
+    const tasquesDuran = ["planxar", "bany"];
+    const tasquesSastre = ["rentadora", "cuina", "netejar la casa", "planxar", "bany"];
+
+
+    const planificacioGalmes = planificacioSetmanal(familiaGalmes, tasquesGalmes, 52);
+    const planificacioDuran = planificacioSetmanal(familiaDuran, tasquesDuran, 4);
+    const planificacioSastre = planificacioSetmanal(familiaSastre, tasquesSastre, 12);
+
+    mostrarPlanificacio("Família Galmés", planificacioGalmes);
+    mostrarPlanificacio("Família Duran", planificacioDuran);
+    mostrarPlanificacio("Família Sastre", planificacioSastre);
+
+
+    function planificacioSetmanal(familia, tasques, setmanes){
+
+        const planificacio = [];
+
+        for(let i = 0; i < setmanes; i++){
+            const tascaAssignada = {};
+            let persona = i % familia.length;
+
+            for(let j = 0; j < tasques.length; j++){
+                const tasca = tasques[j];
+                const membre = familia[(persona + j) % familia.length];
+
+                if(!tascaAssignada[membre]){
+                    tascaAssignada[membre] = [];
+                }
+                tascaAssignada[membre].push(tasca);
+
+            }
+            planificacio.push({setmana: i + 1, tascaAssignada});
+
+        }
+        return planificacio;
+    }
+
+    function mostrarPlanificacio(nomFamilia, planificacio) {
+
+        console.log(nomFamilia + ":");
+
+        for (const semana of planificacio) {
+            console.log("Setmana " + semana.setmana + ":");
+
+            for (const membre in semana.tascaAssignada) {
+                console.log("  " + membre + ": " + semana.tascaAssignada[membre]);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

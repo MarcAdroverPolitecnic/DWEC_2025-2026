@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script>
+
+    let cronoInterval;
+
+    //SERVEIS
+    function startCrono() {
+        const startTime = new Date();
+         cronoInterval = setInterval(function() {
+            const currentTime = new Date();
+            const diffTime = currentTime - startTime;
+
+            pintarCronometre(diffTime);
+        }, 50);
+         return cronoInterval;
+    }
+
+    function resetCrono(){
+        clearInterval(cronoInterval);
+        pintarCronometre(0);
+    }
+
+    //VISTA
+    function pintarCronometre(ms){
+        const segons = Math.floor(ms/1000);
+        const mili = ms % 1000;
+
+        document.querySelector("#crono").innerHTML = `00:${segons}.${mili}`;
+    }
+
+    function pintarScreen(){
+        const app = document.querySelector('#app');
+
+        const crono = document.createElement('p');
+        crono.id = 'crono';
+
+        const startBtn = document.createElement('button');
+        startBtn.innerHTML = "Start";
+        startBtn.addEventListener('click', startCrono);
+
+        const pauseBtn = document.createElement('button');
+        pauseBtn.innerHTML = "Pause";
+
+        const resetBtn = document.createElement('button');
+        resetBtn.innerHTML = "Reset";
+
+        app.appendChild(crono);
+        app.appendChild(startBtn);
+        app.appendChild(pauseBtn);
+        app.appendChild(resetBtn);
+    }
+    //INIT
+    function init(){
+        pintarScreen();
+    }
+
+    init();
+</script>
+</body>
+</html>
