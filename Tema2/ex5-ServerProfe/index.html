@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<div id="cars"></div>
+</body>
+<script type="module">
+    //Feo i malament
+    //for(let i=0; i<10;i++){
+    //   fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
+    //       .then(x=>x.text())
+    //       .then(x=>{
+    //           document.querySelector('#app').innerHTML+= x;
+    //       });
+    //
+
+    //Correcte
+
+    //const promises = [];
+    //for (let i = 0; i < 10; i++) {
+    //    const promise = fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1));
+    //    promises.push(promise);
+    //}
+//
+    //Promise.all(promises)
+    //    .then((result) => {
+    //        const promisesText = [];
+    //        for(const r of result) {
+    //            promisesText.push(r.text());
+    //        }
+    //        Promise.all(promisesText)
+    //            .then(resultsText=>{
+    //            for(const rt of resultsText) {
+    //                document.querySelector('#app').innerHTML+= rt;
+    //            }
+    //        })
+    //    })
+
+    //Correcte Millorat
+
+    const promises = [];
+    for (let i = 0; i < 10; i++) {
+        const promise = fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
+        .then(x =>x.text());
+        promises.push(promise);
+    }
+
+    Promise.all(promises)
+        .then(resultsText=>{
+            for(const rt of resultsText) {
+                document.querySelector('#app').innerHTML+= rt;
+            }
+        })
+
+
+</script>
+</html>

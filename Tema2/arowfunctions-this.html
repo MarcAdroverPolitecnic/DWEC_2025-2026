@@ -23,6 +23,43 @@
         console.log(this);
         this.style.backgroundColor = "blue";
     })
+
+
+
+    function Persona (nom, cognoms){
+        this.nom = nom;
+        this.cognoms = cognoms;
+        this.nomComplet = function(){
+            return "Regular: " + this.nom + " " + this.cognoms;
+        }
+        this.nomComplet2 = () => "Arrow: " + this.nom + " " + this.cognoms;
+    }
+
+    const tomeu = new Persona("Tomeu", "Brunet");
+    console.log("Nom complet1", tomeu.nom, tomeu.cognoms, tomeu.nomComplet());
+    console.log("Nom complet2", tomeu.nom, tomeu.cognoms, tomeu.nomComplet2());
+
+
+    const nomCompletRegular = tomeu.nomComplet;
+
+    const nomCompletRegular2 = function(){
+        console.log("REGULAR 2 This: ", this);
+        return "Regular 2: " + this.nom + " " + this.cognoms;
+    }
+
+    console.log("NomComplet 4 " + nomCompletRegular2());
+
+    const nomCompletArrow = tomeu.nomComplet2;
+
+    console.log("Nom complet3", nomCompletRegular(), nomCompletArrow());
+
+    const nomCompletRegular8 = function(){
+        console.log("REGULAR 2 This: ", this);
+        return "Regular 2: " + this.nom + " " + this.cognoms;
+    }.bind(tomeu)
+
+    console.log("NomComplet 8 " + nomCompletRegular8());
+
 </script>
 
 </body>
