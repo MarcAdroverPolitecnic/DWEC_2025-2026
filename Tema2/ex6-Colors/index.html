@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colors</title>
+</head>
+<button onclick="location.reload();">Recarregar</button>
+<div id="app"></div>
+<body>
+</body>
+<script type="module">
+
+    import {getColors} from "./service/services.js";
+    import {pintar} from "./view/view.js";
+
+    function init(){
+        getColors().then(color => {
+            pintar(color)
+        })
+    }
+    init()
+</script>
+</html>

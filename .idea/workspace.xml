@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit" />
+    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/model/models.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/service/services.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/view/view.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/._esquelet_tema1_2025_26" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._img" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._videos" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/css/._tv.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._background-room.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._background-room2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tvcabinet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tvcabinet.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._alldayfilms.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._kidstv.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._natureplus.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._sportstv.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._technologytoday.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._xtremsports.webm" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,18 +45,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MarcAdroverPolitecnic"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MarcAdroverPolitecnic&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MarcAdroverPolitecnic/DWEC_2025-2026.git",
-    "accountId": "3ba73646-48c0-4958-8184-e66f9f6ba1b4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MarcAdroverPolitecnic/DWEC_2025-2026.git&quot;,
+    &quot;accountId&quot;: &quot;3ba73646-48c0-4958-8184-e66f9f6ba1b4&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -49,6 +73,7 @@
     "JavaScript Debug.Variables.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC",
     "node.js.detected.package.eslint": "true",
@@ -111,6 +136,7 @@
       <workItem from="1762536418417" duration="14000" />
       <workItem from="1762936158925" duration="8443000" />
       <workItem from="1763451744737" duration="187000" />
+      <workItem from="1764143869497" duration="567000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
