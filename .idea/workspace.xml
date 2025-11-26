@@ -5,29 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/model/models.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/service/services.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex6-Colors/view/view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/transport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/usuari.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/service/UserTransportService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/view/view.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/._esquelet_tema1_2025_26" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._.DS_Store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._img" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/._videos" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/css/._tv.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._background-room.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._background-room2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tvcabinet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/img/._tvcabinet.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._alldayfilms.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._kidstv.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._natureplus.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._sportstv.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._technologytoday.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema1/__MACOSX/esquelet_tema1_2025_26/videos/._xtremsports.webm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex5-ServerProfe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex5-ServerProfe/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,29 +47,32 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="338Z7fkiBw3gVYnkbx2gDsG3U3u" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.Equacio2nGrau.html.executor": "Run",
-    "JavaScript Debug.UnaMoscaVolavaPerLaLLum.html.executor": "Run",
-    "JavaScript Debug.Variables.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.Equacio2nGrau.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.UnaMoscaVolavaPerLaLLum.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Variables.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC" />
@@ -91,6 +80,7 @@
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Poker\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2\ex7-UsuarisAmbTransport\model" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2\exercici1" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema1" />
@@ -137,6 +127,7 @@
       <workItem from="1762936158925" duration="8443000" />
       <workItem from="1763451744737" duration="187000" />
       <workItem from="1764143869497" duration="567000" />
+      <workItem from="1764145623631" duration="8396000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />

@@ -8,7 +8,7 @@
 <div id="app"></div>
 <div id="cars"></div>
 </body>
-<script type="module">
+<script type="module" async>
     //Feo i malament
     //for(let i=0; i<10;i++){
     //   fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
@@ -42,19 +42,69 @@
 
     //Correcte Millorat
 
-    const promises = [];
-    for (let i = 0; i < 10; i++) {
-        const promise = fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
-        .then(x =>x.text());
-        promises.push(promise);
+    //const promises = [];
+    //for (let i = 0; i < 10; i++) {
+    //    const promise = fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
+    //    .then(x =>x.text());
+    //    promises.push(promise);
+    //}
+//
+    //Promise.all(promises)
+    //    .then(resultsText=>{
+    //        for(const rt of resultsText) {
+    //            document.querySelector('#app').innerHTML+= rt;
+    //        }
+    //    })
+//----------------------------------------------------------------------------------------------------------------------
+    function asincron1(){
+        return fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num=1")
+            .then(x =>x.text())
+            .then(x=>{
+                return x;
+            })
     }
 
-    Promise.all(promises)
-        .then(resultsText=>{
-            for(const rt of resultsText) {
-                document.querySelector('#app').innerHTML+= rt;
-            }
-        })
+    async function asincron2(){
+        const f = await fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num=1");
+        const ftext = await f.text();
+        return ftext;
+    }
+
+    async function asincron3(){
+        for(let i=0; i<10;i++) {
+            const x = await fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num=" + (i + 1));
+            const ftext = await x.text();
+            document.querySelector('#app').innerHTML+= ftext;
+        }
+    }
+
+    function init(){
+       // asincron1().then(resposta =>{
+       //     console.log("FETCH", resposta);
+       // });
+       //
+       // asincron2().then(resposta =>{
+       //     console.log("AsyncAway", resposta);
+       // })
+
+        asincron3();
+    }
+//----------------------------------------------------------------------------------------------------------------------
+    //MOLT IMPORTANT: ELS AWAITS NO VAND DINS BUCLES
+
+    //const promises = [];
+    //for (let i = 0; i < 10; i++) {
+    //    const promise = fetch("https://theteacher.codiblau.com/public/exercicis/other/asincron-get?num="+(i+1))
+    //    .then(x =>x.text());
+    //    promises.push(promise);
+    //}
+//
+    //const resultats = await Promise.all(promises);
+    //for(const r of resultats){
+    //    document.querySelector('#app').innerHTML+= r;
+    //}
+
+    (async ()=> await init())();
 
 
 </script>
