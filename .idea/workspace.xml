@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/transport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/usuari.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/service/UserTransportService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/view/view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema2/ex2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tema2/ex5-ServerProfe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex5-ServerProfe/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +118,7 @@
       <workItem from="1763451744737" duration="187000" />
       <workItem from="1764143869497" duration="567000" />
       <workItem from="1764145623631" duration="8396000" />
+      <workItem from="1764156652637" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
