@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit" />
+    <list default="true" id="55e73002-34bf-4c48-b07a-492881ba0205" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/Tema2/ex8-CercadorAeroports/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex8-CercadorAeroports/model/aeroport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex8-CercadorAeroports/service/aeroportService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema2/ex8-CercadorAeroports/view/aeroportView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema3/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tema3/primer-projecte-vue/src/views/HelloWorldView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex3-apicat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/transport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/usuari.js" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/model/usuari.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/service/UserTransportService.js" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/service/UserTransportService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/view/view.js" beforeDir="false" afterPath="$PROJECT_DIR$/Tema2/ex7-UsuarisAmbTransport/view/UserTransportView.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +30,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -44,25 +60,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.Equacio2nGrau.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.UnaMoscaVolavaPerLaLLum.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.Variables.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.Tema3: Compose Deployment.executor": "Run",
+    "JavaScript Debug.Equacio2nGrau.html.executor": "Run",
+    "JavaScript Debug.UnaMoscaVolavaPerLaLLum.html.executor": "Run",
+    "JavaScript Debug.Variables.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/marca/OneDrive/Escritorio/2n DAW/DWEC",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC" />
@@ -70,12 +94,31 @@
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Poker\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema3" />
+      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema3\1_PrimerExemple" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2\ex7-UsuarisAmbTransport\model" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2" />
       <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema2\exercici1" />
-      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC\Tema1" />
-      <recent name="C:\Users\marca\OneDrive\Escritorio\2n DAW\DWEC" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tema3: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="Tema3/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.Tema3: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -119,6 +162,7 @@
       <workItem from="1764143869497" duration="567000" />
       <workItem from="1764145623631" duration="8396000" />
       <workItem from="1764156652637" duration="47000" />
+      <workItem from="1765357128554" duration="6728000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />

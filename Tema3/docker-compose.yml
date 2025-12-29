@@ -1,0 +1,13 @@
+name: "dwec"
+services:
+  node-vue1:
+    image: node:24
+    tty: true
+    stdin_open: true
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8085:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true

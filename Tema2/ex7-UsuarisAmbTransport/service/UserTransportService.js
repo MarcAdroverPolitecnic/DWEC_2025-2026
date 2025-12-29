@@ -1,6 +1,45 @@
 import {User} from "../model/usuari.js";
 import {Transport} from "../model/transport.js";
 
+export class UserTransportService {
+
+    async findAll(){
+        const usuari = await fetch("https://theteacher.codiblau.com/public/exercicis/other/usuaris/list");
+        const usuaris = await usuari.json();
+        return usuaris.map(u=>this.#clientToUsuari(u));
+    }
+
+    async getTransportById(id){
+        const transportFetch = await fetch("https://theteacher.codiblau.com/public/exercicis/other/usuaris/transport?", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: 'idtransport=' + id
+        });
+
+        const transport = await transportFetch.json();
+        return this.#clientToTransport(transport);
+    }
+
+    #clientToUsuari(json){
+        const transport = this.getTransportById(json.transport_idtransport);
+        return new User(
+            json.username,
+            json.nom,
+            json.cognom1 + ' ' + json.cognom2,
+            transport);
+    }
+    #clientToTransport(json){
+        return new Transport(
+            json.id,
+            json.nom,
+            json.url);
+    }
+
+
+}
+/*
 export async function findAll(){
     const usuari = await fetch("https://theteacher.codiblau.com/public/exercicis/other/usuaris/list");
     const usuaris = await usuari.json();
@@ -32,4 +71,4 @@ function clientToTransport(json){
         json.id,
         json.nom,
         json.url);
-}
+}*/

@@ -9,14 +9,21 @@
 </body>
 <script type="module">
 
-    import {findAll} from "./service/UserTransportService.js";
-    import {getTransportById} from "./service/UserTransportService.js";
+    import {UserTransportService} from "./service/UserTransportService.js";
+    import {UserTransportView} from "./view/UserTransportView.js";
 
     (async () => {
-        const usuaris = await findAll();
-        console.log(usuaris);
-        const transport = await getTransportById(1);
-        console.log(transport);
+        const service = new UserTransportService();
+        const userTransportView = new UserTransportView();
+
+        const usuaris2 = await service.findAll();
+
+        service.findAll().then((usuaris) => {
+            console.log("Usuaris findall", usuaris)
+        })
+
+        //userTransportView.pintarUsuaris(usuaris)
+
     })()
 </script>
 </html>
