@@ -10,14 +10,23 @@
 </body>
 <script type="module">
 
-    import {getColors} from "./service/services.js";
+    //import {getColors} from "./service/services.js";
+    import {getColors2} from "./service/services.js";
     import {pintar} from "./view/view.js";
-
+/*
     function init(){
         getColors().then(color => {
             pintar(color)
         })
     }
     init()
+*/
+    (async ()=>{
+        const proves = await getColors2();
+
+        pintar(proves);
+
+
+    })()
 </script>
 </html>
