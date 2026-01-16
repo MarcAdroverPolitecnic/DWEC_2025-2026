@@ -5,3 +5,4 @@ export default class Asteroid {
         this.perill = perill;
     }
 }
+

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AireClar — Xarxa de qualitat de l’aire</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <h1>AireClar</h1>
+    <p>Xarxa de qualitat de l’aire · Consulta de mesures per dates</p>
+  </header>
+
+  <div class="layout">
+    <aside class="panel">
+      <h2>Dates</h2>
+      <p class="hint">Pots seleccionar múltiples dates (Ctrl/Cmd).</p>
+
+      <select id="datesSelect" multiple size="12" aria-label="Selecciona dates"></select>
+
+      <button id="searchBtn" class="primary">Cerca</button>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </aside>
+
+    <main class="content">
+      <h2>Resultats</h2>
+
+      <div class="tableWrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>PM2.5</th>
+              <th>PM10</th>
+              <th>AQI</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <!-- Pintar files aquí -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button id="prevBtn">Anterior</button>
+        <span id="pageInfo" class="pageInfo">Pàgina 1</span>
+        <button id="nextBtn">Següent</button>
+      </div>
+    </main>
+
+      <script type="module" src="app.js"></script>
+
+      <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
+  </div>
+</body>
+</html>
