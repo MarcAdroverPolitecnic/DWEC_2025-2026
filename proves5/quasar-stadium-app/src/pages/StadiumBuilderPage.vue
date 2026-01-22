@@ -1,14 +1,13 @@
 <template>
   <q-page class="q-pa-md">
-    <!-- Header -->
     <div class="row items-center q-mb-lg">
       <q-btn
-        flat
-        round
-        icon="arrow_back"
-        color="grey-7"
-        to="/stadiums"
-        class="q-mr-md"
+          flat
+          round
+          icon="arrow_back"
+          color="grey-7"
+          to="/stadiums"
+          class="q-mr-md"
       />
       <div class="col">
         <h4 class="q-ma-none text-weight-bold">
@@ -20,40 +19,39 @@
       </div>
       <div class="col-auto">
         <q-btn
-          color="primary"
-          icon="save"
-          :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
-          unelevated
-          :disable="!isValid"
-          @click="saveStadium"
+            color="primary"
+            icon="save"
+            :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
+            unelevated
+            :disable="!isValid"
+            :loading="isSubmitting"
+            @click="saveStadium"
         />
       </div>
     </div>
 
-    <!-- Stepper -->
     <q-stepper
-      v-model="currentStep"
-      ref="stepper"
-      color="primary"
-      animated
-      flat
-      bordered
+        v-model="currentStep"
+        ref="stepper"
+        color="primary"
+        animated
+        flat
+        bordered
     >
-      <!-- Step 1: Basic Info & Template -->
       <q-step
-        :name="1"
-        title="Basic Information"
-        icon="info"
-        :done="currentStep > 1"
-      >
+          :name="1"
+          title="Basic Information"
+          icon="info"
+          :done="currentStep > 1">
+
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
             <q-input
-              v-model="stadiumName"
-              outlined
-              label="Stadium Name *"
-              placeholder="Enter stadium name"
-              :rules="[val => !!val || 'Stadium name is required']"
+                v-model="stadiumName"
+                outlined
+                label="Stadium Name *"
+                placeholder="Enter stadium name"
+                :rules="[val => !!val || 'Stadium name is required']"
             />
           </div>
         </div>
@@ -62,22 +60,20 @@
           <div class="text-subtitle1 text-weight-medium q-mb-md">Select Template *</div>
           <div class="row q-col-gutter-md">
             <div
-              v-for="template in templates"
-              :key="template.id"
-              class="col-12 col-sm-6 col-md-3"
-            >
+                v-for="template in templates"
+                :key="template.id"
+                class="col-12 col-sm-6 col-md-3">
               <q-card
-                :class="[
-                  'template-card cursor-pointer',
-                  { 'template-selected': selectedTemplate === template.id }
-                ]"
-                @click="selectTemplate(template.id)"
-              >
+                  :class="[
+                      'template-card cursor-pointer',
+                      { 'template-selected': selectedTemplate === template.id }
+                    ]"
+                  @click="selectTemplate(template.id)">
                 <q-card-section class="text-center">
                   <q-icon
-                    :name="template.icon"
-                    size="48px"
-                    :color="selectedTemplate === template.id ? 'primary' : 'grey-5'"
+                      :name="template.icon"
+                      size="48px"
+                      :color="selectedTemplate === template.id ? 'primary' : 'grey-5'"
                   />
                   <div class="text-subtitle1 text-weight-medium q-mt-sm">
                     {{ template.name }}
@@ -86,8 +82,8 @@
                     {{ template.description }}
                   </div>
                   <q-badge
-                    :color="selectedTemplate === template.id ? 'primary' : 'grey'"
-                    class="q-mt-sm"
+                      :color="selectedTemplate === template.id ? 'primary' : 'grey'"
+                      class="q-mt-sm"
                   >
                     {{ template.defaultZones.length }} zones
                   </q-badge>
@@ -99,103 +95,103 @@
 
         <q-stepper-navigation>
           <q-btn
-            color="primary"
-            label="Continue"
-            icon-right="arrow_forward"
-            @click="goToStep(2)"
-            :disable="!stadiumName || !selectedTemplate"
+              color="primary"
+              label="Continue"
+              icon-right="arrow_forward"
+              @click="goToStep(2)"
+              :disable="!stadiumName || !selectedTemplate"
           />
         </q-stepper-navigation>
       </q-step>
 
-      <!-- Step 2: Zone Configuration -->
       <q-step
-        :name="2"
-        title="Configure Zones"
-        icon="grid_view"
-        :done="currentStep > 2"
-      >
+          :name="2"
+          title="Configure Zones"
+          icon="grid_view"
+          :done="currentStep > 2">
+
         <div class="text-subtitle1 text-weight-medium q-mb-md">
           Customize Zones
           <q-btn
-            flat
-            dense
-            color="primary"
-            icon="add"
-            label="Add Zone"
-            class="q-ml-md"
-            @click="addZone"
+              flat
+              dense
+              color="primary"
+              icon="add"
+              label="Add Zone"
+              class="q-ml-md"
+              @click="addZone"
           />
         </div>
 
         <div class="row q-col-gutter-md">
           <div
-            v-for="(zone, index) in zones"
-            :key="zone.id"
-            class="col-12 col-md-6"
+              v-for="(zone, index) in zones"
+              :key="zone.id"
+              class="col-12 col-md-6"
           >
             <q-card flat bordered>
+
               <q-card-section>
                 <div class="row items-center q-mb-md">
                   <q-input
-                    v-model="zone.name"
-                    outlined
-                    dense
-                    label="Zone Name"
-                    class="col"
+                      v-model="zone.name"
+                      outlined
+                      dense
+                      label="Zone Name"
+                      class="col"
                   />
                   <q-btn
-                    flat
-                    round
-                    dense
-                    icon="delete"
-                    color="negative"
-                    class="q-ml-sm"
-                    @click="removeZone(index)"
-                    :disable="zones.length <= 1"
+                      flat
+                      round
+                      dense
+                      icon="delete"
+                      color="negative"
+                      class="q-ml-sm"
+                      @click="removeZone(index)"
+                      :disable="zones.length <= 1"
                   />
                 </div>
 
                 <div class="row q-col-gutter-sm">
                   <div class="col-6">
                     <q-input
-                      v-model.number="zone.rows"
-                      outlined
-                      dense
-                      type="number"
-                      label="Rows"
-                      :min="1"
-                      :max="50"
+                        v-model.number="zone.rows"
+                        outlined
+                        dense
+                        type="number"
+                        label="Rows"
+                        :min="1"
+                        :max="50"
                     />
                   </div>
                   <div class="col-6">
                     <q-input
-                      v-model.number="zone.cols"
-                      outlined
-                      dense
-                      type="number"
-                      label="Columns"
-                      :min="1"
-                      :max="50"
+                        v-model.number="zone.cols"
+                        outlined
+                        dense
+                        type="number"
+                        label="Columns"
+                        :min="1"
+                        :max="50"
                     />
                   </div>
                   <div class="col-6">
                     <q-select
-                      v-model="zone.position"
-                      outlined
-                      dense
-                      :options="positionOptions"
-                      label="Position"
-                      emit-value
-                      map-options
+                        v-model="zone.position"
+                        outlined
+                        dense
+                        :options="positionOptions"
+                        label="Position"
+                        emit-value
+                        map-options
                     />
                   </div>
                   <div class="col-6">
                     <q-input
-                      v-model="zone.color"
-                      outlined
-                      dense
-                      label="Color"
+                        v-model="zone.color"
+                        outlined
+                        dense
+                        label="Color"
                     >
                       <template v-slot:append>
                         <q-icon name="colorize" class="cursor-pointer">
@@ -206,8 +202,8 @@
                       </template>
                       <template v-slot:prepend>
                         <div
-                          class="color-preview"
-                          :style="{ backgroundColor: zone.color }"
+                            class="color-preview"
+                            :style="{ backgroundColor: zone.color }"
                         />
                       </template>
                     </q-input>
@@ -224,28 +220,27 @@
 
         <q-stepper-navigation>
           <q-btn
-            flat
-            color="grey-7"
-            label="Back"
-            icon="arrow_back"
-            @click="goToStep(1)"
-            class="q-mr-sm"
+              flat
+              color="grey-7"
+              label="Back"
+              icon="arrow_back"
+              @click="goToStep(1)"
+              class="q-mr-sm"
           />
           <q-btn
-            color="primary"
-            label="Generate Stadium"
-            icon-right="auto_fix_high"
-            @click="generateStadium"
+              color="primary"
+              label="Generate Stadium"
+              icon-right="auto_fix_high"
+              @click="generateStadium"
           />
         </q-stepper-navigation>
       </q-step>
 
-      <!-- Step 3: Seat Editor -->
       <q-step
-        :name="3"
-        title="Edit Seats"
-        icon="event_seat"
-        :done="currentStep > 3"
+          :name="3"
+          title="Edit Seats"
+          icon="event_seat"
+          :done="currentStep > 3"
       >
         <div class="row q-col-gutter-md q-mb-md">
           <div class="col-12 col-md-8">
@@ -259,50 +254,48 @@
           </div>
           <div class="col-12 col-md-4">
             <q-select
-              v-model="selectedZoneForEdit"
-              outlined
-              dense
-              :options="zoneOptionsForEdit"
-              label="Select Zone to Edit"
-              emit-value
-              map-options
+                v-model="selectedZoneForEdit"
+                outlined
+                dense
+                :options="zoneOptionsForEdit"
+                label="Select Zone to Edit"
+                emit-value
+                map-options
             />
           </div>
         </div>
 
-        <!-- Stadium Preview with Editable Seats -->
         <div class="stadium-editor-container">
           <StadiumEditor
-            :zones="zones"
-            :selected-zone-id="selectedZoneForEdit"
-            :template="selectedTemplate"
-            @toggle-seat="toggleSeat"
+              :zones="zones"
+              :selected-zone-id="selectedZoneForEdit"
+              :template="selectedTemplate"
+              @toggle-seat="toggleSeat"
           />
         </div>
 
         <q-stepper-navigation>
           <q-btn
-            flat
-            color="grey-7"
-            label="Back"
-            icon="arrow_back"
-            @click="goToStep(2)"
-            class="q-mr-sm"
+              flat
+              color="grey-7"
+              label="Back"
+              icon="arrow_back"
+              @click="goToStep(2)"
+              class="q-mr-sm"
           />
           <q-btn
-            color="primary"
-            label="Review & Save"
-            icon-right="arrow_forward"
-            @click="goToStep(4)"
+              color="primary"
+              label="Review & Save"
+              icon-right="arrow_forward"
+              @click="goToStep(4)"
           />
         </q-stepper-navigation>
       </q-step>
 
-      <!-- Step 4: Review & Save -->
       <q-step
-        :name="4"
-        title="Review"
-        icon="check_circle"
+          :name="4"
+          title="Review"
+          icon="check_circle"
       >
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
@@ -359,7 +352,6 @@
               </q-card-section>
             </q-card>
 
-            <!-- Zone Breakdown -->
             <q-card flat bordered class="q-mt-md">
               <q-card-section>
                 <div class="text-subtitle1 text-weight-medium q-mb-md">Zone Breakdown</div>
@@ -367,8 +359,8 @@
                   <q-item v-for="zone in zones" :key="zone.id">
                     <q-item-section avatar>
                       <div
-                        class="zone-color-indicator"
-                        :style="{ backgroundColor: zone.color }"
+                          class="zone-color-indicator"
+                          :style="{ backgroundColor: zone.color }"
                       />
                     </q-item-section>
                     <q-item-section>
@@ -398,19 +390,20 @@
 
         <q-stepper-navigation>
           <q-btn
-            flat
-            color="grey-7"
-            label="Back"
-            icon="arrow_back"
-            @click="goToStep(3)"
-            class="q-mr-sm"
+              flat
+              color="grey-7"
+              label="Back"
+              icon="arrow_back"
+              @click="goToStep(3)"
+              class="q-mr-sm"
           />
           <q-btn
-            color="primary"
-            :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
-            icon="save"
-            unelevated
-            @click="saveStadium"
+              color="primary"
+              :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
+              icon="save"
+              unelevated
+              :loading="isSubmitting"
+              @click="saveStadium"
           />
         </q-stepper-navigation>
       </q-step>
@@ -441,6 +434,7 @@ const stadiumName = ref('')
 const selectedTemplate = ref(null)
 const zones = ref([])
 const selectedZoneForEdit = ref(null)
+const isSubmitting = ref(false)
 
 // Computed
 const isEditMode = computed(() => !!props.id || !!route.params.id)
@@ -448,17 +442,20 @@ const stadiumId = computed(() => props.id || route.params.id)
 
 const templates = computed(() => Object.values(STADIUM_TEMPLATES))
 
+const deletedZoneIds = ref([])
+const deletedSeatIds = ref([])
+
 const selectedTemplateInfo = computed(() => {
   return selectedTemplate.value ? STADIUM_TEMPLATES[selectedTemplate.value] : null
 })
 
 const positionOptions = [
-  { label: 'Top', value: 'top' },
+  { label: 'Top / North', value: 'top' },
   { label: 'Top Upper', value: 'top-upper' },
-  { label: 'Bottom', value: 'bottom' },
+  { label: 'Bottom / South', value: 'bottom' },
   { label: 'Bottom Upper', value: 'bottom-upper' },
-  { label: 'Left', value: 'left' },
-  { label: 'Right', value: 'right' },
+  { label: 'Left / West', value: 'left' },
+  { label: 'Right / East', value: 'right' },
   { label: 'Center', value: 'center' }
 ]
 
@@ -496,7 +493,7 @@ function selectTemplate(templateId) {
     zones.value = template.defaultZones.map(zone => ({
       ...zone,
       id: zone.id || `zone-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      seats: null // Will be generated in step 3
+      seats: null // Will be generated later
     }))
   }
 }
@@ -515,22 +512,53 @@ function addZone() {
 }
 
 function removeZone(index) {
+  const zoneToDelete = zones.value[index]
+
+  // Si la zona tiene un ID numérico, significa que existe en la BD.
+  // La guardamos para eliminarla vía API al guardar.
+  if (zoneToDelete.id && !String(zoneToDelete.id).startsWith('zone-') && !String(zoneToDelete.id).startsWith('temp-')) {
+    deletedZoneIds.value.push(zoneToDelete.id)
+  }
+
   zones.value.splice(index, 1)
 }
 
 function generateStadium() {
-  // Generate seats for each zone
-  zones.value = zones.value.map(zone => ({
-    ...zone,
-    seats: generateSeats(zone.rows, zone.cols)
-  }))
+  zones.value = zones.value.map(zone => {
+    // 1. Calculamos capacidad esperada
+    const expectedCapacity = zone.rows * zone.cols
 
-  // Move to seat editor
+    // 2. Vemos cuántos tiene ahora
+    const currentSeatsCount = zone.seats ? zone.seats.length : 0
+
+    // 3. Si hay discrepancia, regeneramos
+    if (!zone.seats || currentSeatsCount !== expectedCapacity) {
+
+      // --- CORRECCIÓN: Detectar asientos viejos a borrar ---
+      if (zone.seats && zone.seats.length > 0) {
+        zone.seats.forEach(seat => {
+          // Si el asiento tiene un ID real (no empieza por 'temp-'), hay que borrarlo de la BD
+          if (seat.id && !String(seat.id).startsWith('temp-')) {
+            deletedSeatIds.value.push(seat.id)
+          }
+        })
+      }
+      // -----------------------------------------------------
+
+      return {
+        ...zone,
+        seats: generateSeats(zone.rows, zone.cols)
+      }
+    }
+    return zone
+  })
+
+  // Avanzamos al editor
   currentStep.value = 3
 
   $q.notify({
     type: 'positive',
-    message: 'Stadium generated! You can now edit individual seats.',
+    message: 'Distribución generada. Asientos actualizados.',
     position: 'top'
   })
 }
@@ -554,57 +582,140 @@ function goToStep(step) {
   currentStep.value = step
 }
 
-function saveStadium() {
-  if (!isValid.value) return
-
-  const stadiumData = {
-    name: stadiumName.value,
-    template: selectedTemplate.value,
-    zones: zones.value.map(zone => ({
-      ...zone,
-      seats: zone.seats || generateSeats(zone.rows, zone.cols)
-    }))
-  }
-
-  if (isEditMode.value) {
-    stadiumStore.updateStadium(stadiumId.value, stadiumData)
-    $q.notify({
-      type: 'positive',
-      message: 'Stadium updated successfully!',
-      position: 'top'
-    })
-  } else {
-    const newStadium = stadiumStore.addStadium(stadiumData)
-    $q.notify({
-      type: 'positive',
-      message: 'Stadium created successfully!',
-      position: 'top'
-    })
-    // Auto-select the new stadium
-    stadiumStore.selectStadium(newStadium.id)
-  }
-
-  router.push('/stadiums')
-}
-
-// Load existing stadium if editing
-onMounted(() => {
+// Load existing stadium if editing (API Logic)
+onMounted(async () => {
   if (isEditMode.value && stadiumId.value) {
-    const existing = stadiumStore.getStadiumById(stadiumId.value)
-    if (existing) {
-      stadiumName.value = existing.name
-      selectedTemplate.value = existing.template
-      zones.value = JSON.parse(JSON.stringify(existing.zones)) // Deep clone
+    $q.loading.show({ message: 'Loading stadium data...' })
+    try {
+      const existing = await stadiumStore.getStadiumById(stadiumId.value)
+      if (existing) {
+        stadiumName.value = existing.name
+        selectedTemplate.value = existing.template
+        // Deep clone to avoid mutating store state directly during edit
+        zones.value = JSON.parse(JSON.stringify(existing.zones))
+      } else {
+        $q.notify({ type: 'negative', message: 'Stadium not found' })
+        router.push('/stadiums')
+      }
+    } catch (error) {
+      console.error(error)
+      $q.notify({ type: 'negative', message: 'Error loading stadium' })
+    } finally {
+      $q.loading.hide()
     }
   }
 })
 
-// Watch for zone changes to set default edit zone
-watch(zones, (newZones) => {
-  if (newZones.length > 0 && !selectedZoneForEdit.value) {
-    selectedZoneForEdit.value = null // All zones
+// Save to Backend (API Logic)
+// Save to Backend (API Logic)
+async function saveStadium() {
+  if (!isValid.value) return
+  isSubmitting.value = true
+
+  // Asegurar generación de asientos
+  const currentZonesState = zones.value.map(zone => ({
+    ...zone,
+    seats: zone.seats || generateSeats(zone.rows, zone.cols)
+  }))
+
+  try {
+    if (isEditMode.value) {
+      const numericStadiumId = Number(stadiumId.value)
+
+      // A. ELIMINAR ZONAS BORRADAS
+      if (deletedZoneIds.value.length > 0) {
+        for (const zId of deletedZoneIds.value) {
+          await stadiumStore.removeZone(numericStadiumId, zId)
+        }
+        deletedZoneIds.value = []
+      }
+
+      // B. ELIMINAR ASIENTOS HUÉRFANOS (Por redimensionado) <--- NUEVO BLOQUE
+      if (deletedSeatIds.value.length > 0) {
+        // Ejecutamos las eliminaciones en paralelo para ir más rápido
+        const deletePromises = deletedSeatIds.value.map(seatId =>
+            stadiumStore.removeSeat(null, seatId) // zoneId no es necesario para el delete por ID
+        )
+        await Promise.all(deletePromises)
+        deletedSeatIds.value = [] // Limpiar lista
+      }
+
+      // C. PROCESAR ZONAS ACTUALES
+      for (const zone of currentZonesState) {
+        // ... (el resto de tu lógica de crear/actualizar zonas sigue igual)
+        const zoneIsNew = String(zone.id).startsWith('zone-') || String(zone.id).startsWith('temp-');
+
+        if (zoneIsNew) {
+          await stadiumStore.createZone(numericStadiumId, zone)
+        } else {
+          await stadiumStore.updateZone(zone.id, zone);
+
+          if (zone.seats && zone.seats.length > 0) {
+            const seatPromises = []
+            for (const seat of zone.seats) {
+              const seatIsNew = String(seat.id).startsWith('temp-');
+              const seatIsDeleted = seat.deleted === true;
+
+              // Gestión granular manual (clicks individuales)
+              if (!seatIsNew && seatIsDeleted) {
+                seatPromises.push(stadiumStore.removeSeat(zone.id, seat.id));
+              }
+              if (seatIsNew && !seatIsDeleted) {
+                seatPromises.push(stadiumStore.createSeat(zone.id, seat));
+              }
+            }
+            if (seatPromises.length > 0) await Promise.all(seatPromises);
+          }
+        }
+      }
+
+      // D. ACTUALIZAR INFO GENERAL
+      const stadiumData = {
+        name: stadiumName.value,
+        template: selectedTemplate.value,
+        zones: currentZonesState.filter(z => !String(z.id).startsWith('zone-'))
+      }
+
+      await stadiumStore.updateStadium(numericStadiumId, stadiumData)
+      $q.notify({
+        type: 'positive',
+        message: 'Cambios guardados correctamente (zonas y asientos actualizados)',
+        position: 'top'
+      })
+
+    } else {
+      // === MODO CREACIÓN (Nuevo Estadio) ===
+      // En creación enviamos todo el objeto junto, ya que no existen IDs previos
+      const stadiumData = {
+        name: stadiumName.value,
+        template: selectedTemplate.value,
+        zones: currentZonesState
+      }
+
+      const newStadium = await stadiumStore.addStadium(stadiumData)
+
+      $q.notify({
+        type: 'positive',
+        message: 'Estadio creado correctamente!',
+        position: 'top'
+      })
+      // Seleccionamos el nuevo estadio en el store
+      if(newStadium && newStadium.id) stadiumStore.selectStadium(newStadium.id)
+    }
+
+    // Volver a la lista
+    router.push('/stadiums')
+
+  } catch (error) {
+    console.error('Error saving:', error)
+    $q.notify({
+      type: 'negative',
+      message: error.message || 'Error al guardar la configuración del estadio'
+    })
+  } finally {
+    isSubmitting.value = false
   }
-}, { immediate: true })
+}
 </script>
 
 <style scoped>

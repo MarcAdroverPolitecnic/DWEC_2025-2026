@@ -1,36 +1,44 @@
 <template>
   <div class="realistic-stadium-editor">
+
+
+
+
+
+
+
+
     <!-- Football Stadium Layout -->
     <div v-if="layoutType === 'stadium'" class="stadium-container football-layout">
       <!-- North Stands -->
       <div class="stadium-section north-section">
         <div
-          v-for="zone in northZones"
-          :key="zone.id"
-          :class="['zone-wrapper', { 'zone-selected': selectedZoneId === zone.id || !selectedZoneId }]"
-        >
-          <div class="zone-label-top" :style="{ backgroundColor: zone.color }">
-            {{ zone.name }} ({{ getActiveSeatsCount(zone) }}/{{ zone.seats?.length || 0 }})
-          </div>
-          <div class="seats-container north-seats" :style="getSeatsContainerStyle(zone)">
-            <div
-              v-for="(row, rowIndex) in getRowsReversed(zone)"
-              :key="rowIndex"
-              class="seat-row"
-              :style="getCurvedRowStyle('north', zone, rowIndex)"
-            >
-              <div
-                v-for="seat in row"
-                :key="seat.id"
-                :class="getSeatClasses(seat)"
-                :style="getSeatStyle(zone, seat)"
-                :title="getSeatTitle(zone, seat)"
-                @click="handleSeatClick(zone.id, seat.id)"
-              >
-                <span class="seat-label">{{ seat.label }}</span>
-              </div>
-            </div>
-          </div>
+            v-for="zone in northZones"
+            :key="zone.id"
+            :class="['zone-wrapper', { 'zone-selected': selectedZoneId === zone.id || !selectedZoneId }]">
+
+                <div class="zone-label-top" :style="{ backgroundColor: zone.color }">
+                  {{ zone.name }} ({{ getActiveSeatsCount(zone) }}/{{ zone.seats?.length || 0 }})
+                </div>
+                <div class="seats-container north-seats" :style="getSeatsContainerStyle(zone)">
+                  <div
+                    v-for="(row, rowIndex) in getRowsReversed(zone)"
+                    :key="rowIndex"
+                    class="seat-row"
+                    :style="getCurvedRowStyle('north', zone, rowIndex)"
+                  >
+                    <div
+                      v-for="seat in row"
+                      :key="seat.id"
+                      :class="getSeatClasses(seat)"
+                      :style="getSeatStyle(zone, seat)"
+                      :title="getSeatTitle(zone, seat)"
+                      @click="handleSeatClick(zone.id, seat.id)"
+                    >
+                      <span class="seat-label">{{ seat.label }}</span>
+                    </div>
+                  </div>
+                </div>
         </div>
       </div>
 
@@ -41,31 +49,31 @@
           <div
             v-for="zone in westZones"
             :key="zone.id"
-            :class="['zone-wrapper vertical-zone', { 'zone-selected': selectedZoneId === zone.id || !selectedZoneId }]"
-          >
-            <div class="zone-label-side left-label" :style="{ backgroundColor: zone.color }">
-              <span>{{ zone.name }}</span>
-              <span class="zone-count">{{ getActiveSeatsCount(zone) }}</span>
-            </div>
-            <div class="seats-container west-seats" :style="getVerticalSeatsContainerStyle(zone)">
-              <div
-                v-for="(col, colIndex) in getColumnsForWest(zone)"
-                :key="colIndex"
-                class="seat-column"
-                :style="getCurvedColumnStyle('west', zone, colIndex)"
-              >
-                <div
-                  v-for="seat in col"
-                  :key="seat.id"
-                  :class="getSeatClasses(seat)"
-                  :style="getSeatStyle(zone, seat)"
-                  :title="getSeatTitle(zone, seat)"
-                  @click="handleSeatClick(zone.id, seat.id)"
-                >
-                  <span class="seat-label">{{ seat.label }}</span>
-                </div>
-              </div>
-            </div>
+            :class="['zone-wrapper vertical-zone', { 'zone-selected': selectedZoneId === zone.id || !selectedZoneId }]">
+
+                  <div class="zone-label-side left-label" :style="{ backgroundColor: zone.color }">
+                    <span>{{ zone.name }}</span>
+                    <span class="zone-count">{{ getActiveSeatsCount(zone) }}</span>
+                  </div>
+                  <div class="seats-container west-seats" :style="getVerticalSeatsContainerStyle(zone)">
+                    <div
+                      v-for="(col, colIndex) in getColumnsForWest(zone)"
+                      :key="colIndex"
+                      class="seat-column"
+                      :style="getCurvedColumnStyle('west', zone, colIndex)"
+                    >
+                      <div
+                        v-for="seat in col"
+                        :key="seat.id"
+                        :class="getSeatClasses(seat)"
+                        :style="getSeatStyle(zone, seat)"
+                        :title="getSeatTitle(zone, seat)"
+                        @click="handleSeatClick(zone.id, seat.id)"
+                      >
+                        <span class="seat-label">{{ seat.label }}</span>
+                      </div>
+                    </div>
+                  </div>
           </div>
         </div>
 
@@ -181,6 +189,16 @@
       </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
     <!-- Arena Layout (Circular/Oval) -->
     <div v-else-if="layoutType === 'arena'" class="stadium-container arena-layout">
       <!-- Top Curved Section -->
@@ -225,7 +243,7 @@
             :class="['zone-wrapper arena-zone-side', { 'zone-selected': selectedZoneId === zone.id || !selectedZoneId }]"
           >
             <div class="zone-label-side left-label" :style="{ backgroundColor: zone.color }">
-              <span>{{ zone.name }}</span>
+              <span>{{ zone.name }} </span>
             </div>
             <div class="seats-container arena-seats-side">
               <div
@@ -259,10 +277,6 @@
               <div class="court-three-point bottom-arc"></div>
               <div class="court-key top-key"></div>
               <div class="court-key bottom-key"></div>
-            </div>
-            <div class="field-text">
-              <q-icon name="sports_basketball" size="28px" color="white" />
-              <span>COURT</span>
             </div>
           </div>
         </div>
@@ -333,6 +347,14 @@
       </div>
     </div>
 
+
+
+
+
+
+
+
+
     <!-- Theater Layout -->
     <div v-else-if="layoutType === 'theater'" class="stadium-container theater-layout">
       <!-- Stage at the top -->
@@ -393,6 +415,15 @@
         <span>Orchestra Pit</span>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
 
     <!-- Concert Hall Layout -->
     <div v-else-if="layoutType === 'concert'" class="stadium-container concert-layout">
