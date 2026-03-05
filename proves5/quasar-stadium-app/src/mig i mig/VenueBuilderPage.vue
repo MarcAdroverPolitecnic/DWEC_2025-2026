@@ -6,26 +6,26 @@
           round
           icon="arrow_back"
           color="grey-7"
-          to="/stadiums"
+          to="/venues"
           class="q-mr-md"
       />
       <div class="col">
         <h4 class="q-ma-none text-weight-bold">
-          {{ isEditMode ? 'Edit Stadium' : 'Create Stadium' }}
+          {{ isEditMode ? 'Edit Venue' : 'Create Venue' }}
         </h4>
         <p class="text-grey-7 q-mb-none">
-          {{ isEditMode ? 'Modify stadium configuration and seats' : 'Build a new stadium from a template' }}
+          {{ isEditMode ? 'Modify venue configuration and seats' : 'Build a new venue from a template' }}
         </p>
       </div>
       <div class="col-auto">
         <q-btn
             color="primary"
             icon="save"
-            :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
+            :label="isEditMode ? 'Save Changes' : 'Create Venue'"
             unelevated
             :disable="!isValid"
             :loading="isSubmitting"
-            @click="saveStadium"
+            @click="saveVenue"
         />
       </div>
     </div>
@@ -47,11 +47,11 @@
         <div class="row q-col-gutter-lg">
           <div class="col-12 col-md-6">
             <q-input
-                v-model="stadiumName"
+                v-model="venueName"
                 outlined
-                label="Stadium Name *"
-                placeholder="Enter stadium name"
-                :rules="[val => !!val || 'Stadium name is required']"
+                label="Venue Name *"
+                placeholder="Enter venue name"
+                :rules="[val => !!val || 'Venue name is required']"
             />
           </div>
         </div>
@@ -99,11 +99,12 @@
               label="Continue"
               icon-right="arrow_forward"
               @click="goToStep(2)"
-              :disable="!stadiumName || !selectedTemplate"
+              :disable="!venueName || !selectedTemplate"
           />
         </q-stepper-navigation>
       </q-step>
 
+   <!--
       <q-step
           :name="2"
           title="Configure Zones"
@@ -229,9 +230,9 @@
           />
           <q-btn
               color="primary"
-              label="Generate Stadium"
+              label="Generate Venue"
               icon-right="auto_fix_high"
-              @click="generateStadium"
+              @click="generateVenue"
           />
         </q-stepper-navigation>
       </q-step>
@@ -265,8 +266,8 @@
           </div>
         </div>
 
-        <div class="stadium-editor-container">
-          <StadiumEditor
+        <div class="venue-editor-container">
+          <VenueEditor
               :zones="zones"
               :selected-zone-id="selectedZoneForEdit"
               :template="selectedTemplate"
@@ -301,15 +302,15 @@
           <div class="col-12 col-md-6">
             <q-card flat bordered>
               <q-card-section>
-                <div class="text-subtitle1 text-weight-medium q-mb-md">Stadium Summary</div>
+                <div class="text-subtitle1 text-weight-medium q-mb-md">Venue Summary</div>
                 <q-list>
                   <q-item>
                     <q-item-section avatar>
-                      <q-icon name="stadium" color="primary" />
+                      <q-icon name="venue" color="primary" />
                     </q-item-section>
                     <q-item-section>
-                      <q-item-label>{{ stadiumName }}</q-item-label>
-                      <q-item-label caption>Stadium Name</q-item-label>
+                      <q-item-label>{{ venueName }}</q-item-label>
+                      <q-item-label caption>Venue Name</q-item-label>
                     </q-item-section>
                   </q-item>
                   <q-item>
@@ -381,9 +382,9 @@
           </div>
 
           <div class="col-12 col-md-6">
-            <div class="text-subtitle1 text-weight-medium q-mb-md">Stadium Preview</div>
-            <div class="stadium-preview-container">
-              <StadiumPreview :zones="zones" :template="selectedTemplate" />
+            <div class="text-subtitle1 text-weight-medium q-mb-md">Venue Preview</div>
+            <div class="venue-preview-container">
+              <VenuePreview :zones="zones" :template="selectedTemplate" />
             </div>
           </div>
         </div>
@@ -399,25 +400,26 @@
           />
           <q-btn
               color="primary"
-              :label="isEditMode ? 'Save Changes' : 'Create Stadium'"
+              :label="isEditMode ? 'Save Changes' : 'Create Venue'"
               icon="save"
               unelevated
               :loading="isSubmitting"
-              @click="saveStadium"
+              @click="saveVenue"
           />
         </q-stepper-navigation>
-      </q-step>
+      </q-step> -->
     </q-stepper>
   </q-page>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue' //watch
 import { useRoute, useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
-import { useStadiumStore, STADIUM_TEMPLATES, generateSeats } from '../stores/stadiumStore'
-import StadiumEditor from '../components/StadiumEditor.vue'
-import StadiumPreview from '../components/StadiumPreview.vue'
+//import { useStadiumStore, VENUE_TEMPLATES, generateSeats } from '../stores/stadiumStore'
+import { venueStore , VENUE_TEMPLATES} from '../service/venueService.js'  //generateSeats
+//import VenueEditor from '../components/VenueEditor.vue'
+//import VenuePreview from '../components/VenuePreview.vue'
 
 const props = defineProps({
   id: String
@@ -426,68 +428,68 @@ const props = defineProps({
 const $q = useQuasar()
 const route = useRoute()
 const router = useRouter()
-const stadiumStore = useStadiumStore()
+const venueService = venueStore();
 
 // State
 const currentStep = ref(1)
-const stadiumName = ref('')
+const venueName = ref('')
 const selectedTemplate = ref(null)
 const zones = ref([])
-const selectedZoneForEdit = ref(null)
+//const selectedZoneForEdit = ref(null)
 const isSubmitting = ref(false)
 
 // Computed
 const isEditMode = computed(() => !!props.id || !!route.params.id)
-const stadiumId = computed(() => props.id || route.params.id)
+const venueId = computed(() => props.id || route.params.id)
 
-const templates = computed(() => Object.values(STADIUM_TEMPLATES))
+const templates = computed(() => Object.values(VENUE_TEMPLATES))
 
-const deletedZoneIds = ref([])
-const deletedSeatIds = ref([])
+//const deletedZoneIds = ref([])
+//const deletedSeatIds = ref([])
 
-const selectedTemplateInfo = computed(() => {
-  return selectedTemplate.value ? STADIUM_TEMPLATES[selectedTemplate.value] : null
-})
+//const selectedTemplateInfo = computed(() => {
+//  return selectedTemplate.value ? VENUE_TEMPLATES[selectedTemplate.value] : null
+//})
 
-const positionOptions = [
-  { label: 'Top / North', value: 'top' },
-  { label: 'Top Upper', value: 'top-upper' },
-  { label: 'Bottom / South', value: 'bottom' },
-  { label: 'Bottom Upper', value: 'bottom-upper' },
-  { label: 'Left / West', value: 'left' },
-  { label: 'Right / East', value: 'right' },
-]
+//const positionOptions = [
+//  { label: 'Top / North', value: 'top' },
+//  { label: 'Top Upper', value: 'top-upper' },
+//  { label: 'Bottom / South', value: 'bottom' },
+//  { label: 'Bottom Upper', value: 'bottom-upper' },
+//  { label: 'Left / West', value: 'left' },
+//  { label: 'Right / East', value: 'right' },
+//]
 
-const zoneOptionsForEdit = computed(() => [
-  { label: 'All Zones', value: null },
-  ...zones.value.map(z => ({
-    label: z.name,
-    value: z.id
-  }))
-])
+//const zoneOptionsForEdit = computed(() => [
+//  { label: 'All Zones', value: null },
+//  ...zones.value.map(z => ({
+//    label: z.name,
+//    value: z.id
+//  }))
+//])
 
-const totalActiveSeats = computed(() => {
-  return zones.value.reduce((total, zone) => {
-    if (!zone.seats) return total
-    return total + zone.seats.filter(s => !s.deleted).length
-  }, 0)
-})
+//const totalActiveSeats = computed(() => {
+//  return zones.value.reduce((total, zone) => {
+//    if (!zone.seats) return total
+//    return total + zone.seats.filter(s => !s.deleted).length
+//  }, 0)
+//})
 
-const deletedSeatsCount = computed(() => {
-  return zones.value.reduce((total, zone) => {
-    if (!zone.seats) return total
-    return total + zone.seats.filter(s => s.deleted).length
-  }, 0)
-})
-
-const isValid = computed(() => {
-  return stadiumName.value && selectedTemplate.value && zones.value.length > 0
-})
+//const deletedSeatsCount = computed(() => {
+//  return zones.value.reduce((total, zone) => {
+//    if (!zone.seats) return total
+//    return total + zone.seats.filter(s => s.deleted).length
+//  }, 0)
+//})
+//
+//const isValid = computed(() => {
+//  return venueName.value && selectedTemplate.value && zones.value.length > 0
+//})
 
 // Methods
 function selectTemplate(templateId) {
   selectedTemplate.value = templateId
-  const template = STADIUM_TEMPLATES[templateId]
+  const template = VENUE_TEMPLATES[templateId]
   if (template) {
     zones.value = template.defaultZones.map(zone => ({
       ...zone,
@@ -497,108 +499,108 @@ function selectTemplate(templateId) {
   }
 }
 
-function addZone() {
-  const newZone = {
-    id: `zone-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-    name: `Zone ${zones.value.length + 1}`,
-    position: 'center',
-    rows: 10,
-    cols: 10,
-    color: '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'),
-    seats: null
-  }
-  zones.value.push(newZone)
-}
+//function addZone() {
+//  const newZone = {
+//    id: `zone-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+//    name: `Zone ${zones.value.length + 1}`,
+//    position: 'center',
+//    rows: 10,
+//    cols: 10,
+//    color: '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'),
+//    seats: null
+//  }
+//  zones.value.push(newZone)
+//}
+//
+//function removeZone(index) {
+//  const zoneToDelete = zones.value[index]
+//
+//  // Si la zona tiene un ID numérico, significa que existe en la BD.
+//  // La guardamos para eliminarla vía API al guardar.
+//  if (zoneToDelete.id && !String(zoneToDelete.id).startsWith('zone-') && !String(zoneToDelete.id).startsWith('temp-')) {
+//    deletedZoneIds.value.push(zoneToDelete.id)
+//  }
+//
+//  zones.value.splice(index, 1)
+//}
 
-function removeZone(index) {
-  const zoneToDelete = zones.value[index]
+//function generateVenue() {
+//  zones.value = zones.value.map(zone => {
+//    // 1. Calculamos capacidad esperada
+//    const expectedCapacity = zone.rows * zone.cols
+//
+//    // 2. Vemos cuántos tiene ahora
+//    const currentSeatsCount = zone.seats ? zone.seats.length : 0
+//
+//    // 3. Si hay discrepancia, regeneramos
+//    if (!zone.seats || currentSeatsCount !== expectedCapacity) {
+//
+//      // --- CORRECCIÓN: Detectar asientos viejos a borrar ---
+//      if (zone.seats && zone.seats.length > 0) {
+//        zone.seats.forEach(seat => {
+//          // Si el asiento tiene un ID real (no empieza por 'temp-'), hay que borrarlo de la BD
+//          if (seat.id && !String(seat.id).startsWith('temp-')) {
+//            deletedSeatIds.value.push(seat.id)
+//          }
+//        })
+//      }
+//      // -----------------------------------------------------
+//
+//      return {
+//        ...zone,
+//        seats: generateSeats(zone.rows, zone.cols)
+//      }
+//    }
+//    return zone
+//  })
+//
+//  // Avanzamos al editor
+//  currentStep.value = 3
+//
+//  $q.notify({
+//    type: 'positive',
+//    message: 'Distribución generada. Asientos actualizados.',
+//    position: 'top'
+//  })
+//}
 
-  // Si la zona tiene un ID numérico, significa que existe en la BD.
-  // La guardamos para eliminarla vía API al guardar.
-  if (zoneToDelete.id && !String(zoneToDelete.id).startsWith('zone-') && !String(zoneToDelete.id).startsWith('temp-')) {
-    deletedZoneIds.value.push(zoneToDelete.id)
-  }
+//function toggleSeat(zoneId, seatId) {
+//  const zone = zones.value.find(z => z.id === zoneId)
+//  if (zone && zone.seats) {
+//    const seat = zone.seats.find(s => s.id === seatId)
+//    if (seat) {
+//      seat.deleted = !seat.deleted
+//    }
+//  }
+//}
 
-  zones.value.splice(index, 1)
-}
-
-function generateStadium() {
-  zones.value = zones.value.map(zone => {
-    // 1. Calculamos capacidad esperada
-    const expectedCapacity = zone.rows * zone.cols
-
-    // 2. Vemos cuántos tiene ahora
-    const currentSeatsCount = zone.seats ? zone.seats.length : 0
-
-    // 3. Si hay discrepancia, regeneramos
-    if (!zone.seats || currentSeatsCount !== expectedCapacity) {
-
-      // --- CORRECCIÓN: Detectar asientos viejos a borrar ---
-      if (zone.seats && zone.seats.length > 0) {
-        zone.seats.forEach(seat => {
-          // Si el asiento tiene un ID real (no empieza por 'temp-'), hay que borrarlo de la BD
-          if (seat.id && !String(seat.id).startsWith('temp-')) {
-            deletedSeatIds.value.push(seat.id)
-          }
-        })
-      }
-      // -----------------------------------------------------
-
-      return {
-        ...zone,
-        seats: generateSeats(zone.rows, zone.cols)
-      }
-    }
-    return zone
-  })
-
-  // Avanzamos al editor
-  currentStep.value = 3
-
-  $q.notify({
-    type: 'positive',
-    message: 'Distribución generada. Asientos actualizados.',
-    position: 'top'
-  })
-}
-
-function toggleSeat(zoneId, seatId) {
-  const zone = zones.value.find(z => z.id === zoneId)
-  if (zone && zone.seats) {
-    const seat = zone.seats.find(s => s.id === seatId)
-    if (seat) {
-      seat.deleted = !seat.deleted
-    }
-  }
-}
-
-function getZoneActiveSeats(zone) {
-  if (!zone.seats) return zone.rows * zone.cols
-  return zone.seats.filter(s => !s.deleted).length
-}
+//function getZoneActiveSeats(zone) {
+//  if (!zone.seats) return zone.rows * zone.cols
+//  return zone.seats.filter(s => !s.deleted).length
+//}
 
 function goToStep(step) {
   currentStep.value = step
 }
 
-// Load existing stadium if editing (API Logic)
+// Load existing venue if editing (API Logic)
 onMounted(async () => {
-  if (isEditMode.value && stadiumId.value) {
-    $q.loading.show({ message: 'Loading stadium data...' })
+  if (isEditMode.value && venueId.value) {
+    $q.loading.show({ message: 'Loading venue data...' })
     try {
-      const existing = await stadiumStore.getStadiumById(stadiumId.value)
+      const existing = await venueService.getVenueById(venueId.value)
       if (existing) {
-        stadiumName.value = existing.name
+        venueName.value = existing.name
         selectedTemplate.value = existing.template
         // Deep clone to avoid mutating store state directly during edit
         zones.value = JSON.parse(JSON.stringify(existing.zones))
       } else {
-        $q.notify({ type: 'negative', message: 'Stadium not found' })
-        router.push('/stadiums')
+        $q.notify({ type: 'negative', message: 'Venue not found' })
+        router.push('/venues')
       }
     } catch (error) {
       console.error(error)
-      $q.notify({ type: 'negative', message: 'Error loading stadium' })
+      $q.notify({ type: 'negative', message: 'Error loading venue' })
     } finally {
       $q.loading.hide()
     }
@@ -607,114 +609,114 @@ onMounted(async () => {
 
 // Save to Backend (API Logic)
 // Save to Backend (API Logic)
-async function saveStadium() {
-  if (!isValid.value) return
-  isSubmitting.value = true
-
-  // Asegurar generación de asientos
-  const currentZonesState = zones.value.map(zone => ({
-    ...zone,
-    seats: zone.seats || generateSeats(zone.rows, zone.cols)
-  }))
-
-  try {
-    if (isEditMode.value) {
-      const numericStadiumId = Number(stadiumId.value)
-
-      // A. ELIMINAR ZONAS BORRADAS
-      if (deletedZoneIds.value.length > 0) {
-        for (const zId of deletedZoneIds.value) {
-          await stadiumStore.removeZone(numericStadiumId, zId)
-        }
-        deletedZoneIds.value = []
-      }
-
-      // B. ELIMINAR ASIENTOS HUÉRFANOS (Por redimensionado) <--- NUEVO BLOQUE
-      if (deletedSeatIds.value.length > 0) {
-        // Ejecutamos las eliminaciones en paralelo para ir más rápido
-        const deletePromises = deletedSeatIds.value.map(seatId =>
-            stadiumStore.removeSeat(null, seatId) // zoneId no es necesario para el delete por ID
-        )
-        await Promise.all(deletePromises)
-        deletedSeatIds.value = [] // Limpiar lista
-      }
-
-      // C. PROCESAR ZONAS ACTUALES
-      for (const zone of currentZonesState) {
-        // ... (el resto de tu lógica de crear/actualizar zonas sigue igual)
-        const zoneIsNew = String(zone.id).startsWith('zone-') || String(zone.id).startsWith('temp-');
-
-        if (zoneIsNew) {
-          await stadiumStore.createZone(numericStadiumId, zone)
-        } else {
-          await stadiumStore.updateZone(zone.id, zone);
-
-          if (zone.seats && zone.seats.length > 0) {
-            const seatPromises = []
-            for (const seat of zone.seats) {
-              const seatIsNew = String(seat.id).startsWith('temp-');
-              const seatIsDeleted = seat.deleted === true;
-
-              // Gestión granular manual (clicks individuales)
-              if (!seatIsNew && seatIsDeleted) {
-                seatPromises.push(stadiumStore.removeSeat(zone.id, seat.id));
-              }
-              if (seatIsNew && !seatIsDeleted) {
-                seatPromises.push(stadiumStore.createSeat(zone.id, seat));
-              }
-            }
-            if (seatPromises.length > 0) await Promise.all(seatPromises);
-          }
-        }
-      }
-
-      // D. ACTUALIZAR INFO GENERAL
-      const stadiumData = {
-        name: stadiumName.value,
-        template: selectedTemplate.value,
-        zones: currentZonesState.filter(z => !String(z.id).startsWith('zone-'))
-      }
-
-      await stadiumStore.updateStadium(numericStadiumId, stadiumData)
-      $q.notify({
-        type: 'positive',
-        message: 'Cambios guardados correctamente (zonas y asientos actualizados)',
-        position: 'top'
-      })
-
-    } else {
-      // === MODO CREACIÓN (Nuevo Estadio) ===
-      // En creación enviamos todo el objeto junto, ya que no existen IDs previos
-      const stadiumData = {
-        name: stadiumName.value,
-        template: selectedTemplate.value,
-        zones: currentZonesState
-      }
-
-      const newStadium = await stadiumStore.addStadium(stadiumData)
-
-      $q.notify({
-        type: 'positive',
-        message: 'Estadio creado correctamente!',
-        position: 'top'
-      })
-      // Seleccionamos el nuevo estadio en el store
-      if(newStadium && newStadium.id) stadiumStore.selectStadium(newStadium.id)
-    }
-
-    // Volver a la lista
-    router.push('/stadiums')
-
-  } catch (error) {
-    console.error('Error saving:', error)
-    $q.notify({
-      type: 'negative',
-      message: error.message || 'Error al guardar la configuración del estadio'
-    })
-  } finally {
-    isSubmitting.value = false
-  }
-}
+//async function saveVenue() {
+//  if (!isValid.value) return
+//  isSubmitting.value = true
+//
+//  // Asegurar generación de asientos
+//  const currentZonesState = zones.value.map(zone => ({
+//    ...zone,
+//    seats: zone.seats || generateSeats(zone.rows, zone.cols)
+//  }))
+//
+//  try {
+//    if (isEditMode.value) {
+//      const numericVenueId = Number(venueId.value)
+//
+//      // A. ELIMINAR ZONAS BORRADAS
+//      if (deletedZoneIds.value.length > 0) {
+//        for (const zId of deletedZoneIds.value) {
+//          await venueService.removeZone(numericVenueId, zId)
+//        }
+//        deletedZoneIds.value = []
+//      }
+//
+//      // B. ELIMINAR ASIENTOS HUÉRFANOS (Por redimensionado) <--- NUEVO BLOQUE
+//      if (deletedSeatIds.value.length > 0) {
+//        // Ejecutamos las eliminaciones en paralelo para ir más rápido
+//        const deletePromises = deletedSeatIds.value.map(seatId =>
+//          venueService.removeSeat(null, seatId) // zoneId no es necesario para el delete por ID
+//        )
+//        await Promise.all(deletePromises)
+//        deletedSeatIds.value = [] // Limpiar lista
+//      }
+//
+//      // C. PROCESAR ZONAS ACTUALES
+//      for (const zone of currentZonesState) {
+//        // ... (el resto de tu lógica de crear/actualizar zonas sigue igual)
+//        const zoneIsNew = String(zone.id).startsWith('zone-') || String(zone.id).startsWith('temp-');
+//
+//        if (zoneIsNew) {
+//          await venueService.createZone(numericVenueId, zone)
+//        } else {
+//          await venueService.updateZone(zone.id, zone);
+//
+//          if (zone.seats && zone.seats.length > 0) {
+//            const seatPromises = []
+//            for (const seat of zone.seats) {
+//              const seatIsNew = String(seat.id).startsWith('temp-');
+//              const seatIsDeleted = seat.deleted === true;
+//
+//              // Gestión granular manual (clicks individuales)
+//              if (!seatIsNew && seatIsDeleted) {
+//                seatPromises.push(venueService.removeSeat(zone.id, seat.id));
+//              }
+//              if (seatIsNew && !seatIsDeleted) {
+//                seatPromises.push(venueService.createSeat(zone.id, seat));
+//              }
+//            }
+//            if (seatPromises.length > 0) await Promise.all(seatPromises);
+//          }
+//        }
+//      }
+//
+//      // D. ACTUALIZAR INFO GENERAL
+//      const venueData = {
+//        name: venueName.value,
+//        template: selectedTemplate.value,
+//        zones: currentZonesState.filter(z => !String(z.id).startsWith('zone-'))
+//      }
+//
+//      await venueService.updateVenue(numericVenueId, venueData)
+//      $q.notify({
+//        type: 'positive',
+//        message: 'Cambios guardados correctamente (zonas y asientos actualizados)',
+//        position: 'top'
+//      })
+//
+//    } else {
+//      // === MODO CREACIÓN (Nuevo Estadio) ===
+//      // En creación enviamos todo el objeto junto, ya que no existen IDs previos
+//      const venueData = {
+//        name: venueName.value,
+//        template: selectedTemplate.value,
+//        zones: currentZonesState
+//      }
+//
+//      const newVenue = await venueService.addVenue(venueData)
+//
+//      $q.notify({
+//        type: 'positive',
+//        message: 'Estadio creado correctamente!',
+//        position: 'top'
+//      })
+//      // Seleccionamos el nuevo estadio en el store
+//      if(newVenue && newVenue.id) venueService.selectVenue(newVenue.id)
+//    }
+//
+//    // Volver a la lista
+//    router.push('/venues')
+//
+//  } catch (error) {
+//    console.error('Error saving:', error)
+//    $q.notify({
+//      type: 'negative',
+//      message: error.message || 'Error saving the venue configuration'
+//    })
+//  } finally {
+//    isSubmitting.value = false
+//  }
+//}
 </script>
 
 <style scoped>
@@ -746,7 +748,7 @@ async function saveStadium() {
   border-radius: 4px;
 }
 
-.stadium-editor-container {
+.venue-editor-container {
   background: #f5f5f5;
   border-radius: 8px;
   padding: 16px;
@@ -754,10 +756,11 @@ async function saveStadium() {
   overflow: auto;
 }
 
-.stadium-preview-container {
+.venue-preview-container {
   background: #f5f5f5;
   border-radius: 8px;
   padding: 16px;
   min-height: 300px;
 }
 </style>
+
