@@ -27,6 +27,7 @@ const carregarDades = async () => {
       GaleriaService.getCategories()
     ])
     obres.value = resObres
+    console.log(resObres)
     categories.value = resCategories
   } catch (error) {
     console.error("Error en la càrrega:", error)

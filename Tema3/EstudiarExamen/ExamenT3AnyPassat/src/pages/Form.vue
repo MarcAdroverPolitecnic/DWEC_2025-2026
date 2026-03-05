@@ -21,7 +21,7 @@ const enviarFormulari = async () => {
 
   if (esValid) {
     try {
-      await GaleriaService.saveObra(novaObra.value)
+      await GaleriaService.saveObra(novaObra.value.toPayload())
 
       novaObra.value = new Obra()
       elFormulari.value.resetValidation()
@@ -70,6 +70,10 @@ onMounted(() => {
         v-model="novaObra.categoria"
         :options="categories"
         label="Categoria *"
+        option-label="name"
+        option-value="name"
+        emit-value
+        map-options
         lazy-rules
         :rules="[val => !!val || 'Selecciona una categoria']"
       />
