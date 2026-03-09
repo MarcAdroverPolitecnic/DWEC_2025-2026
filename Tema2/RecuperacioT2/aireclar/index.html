@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AireClar — Xarxa de qualitat de l'aire</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Ex7: Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <h1>AireClar</h1>
+    <p>Xarxa de qualitat de l'aire · Consulta de mesures per dates</p>
+  </header>
+
+  <div class="layout">
+    <aside class="panel">
+      <h2>Dates</h2>
+      <p class="hint">Pots seleccionar múltiples dates (Ctrl/Cmd).</p>
+
+      <select id="datesSelect" multiple size="12" aria-label="Selecciona dates"></select>
+
+      <button id="searchBtn" class="primary">Cerca</button>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </aside>
+
+    <main class="content">
+      <h2>Resultats</h2>
+
+      <div class="tableWrap">
+        <table id="resultsTable">
+          <thead>
+            <tr>
+              <th>Data/Hora</th>
+              <th>PM2.5 (µg/m³)</th>
+              <th>PM10 (µg/m³)</th>
+              <th>AQI Europeu</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <tr><td colspan="4">Selecciona una o més dates i prem Cerca.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button id="prevBtn">Anterior</button>
+        <span id="pageInfo" class="pageInfo">Pàgina 1</span>
+        <button id="nextBtn">Següent</button>
+      </div>
+
+      <!-- Ex7: Gràfic -->
+      <div class="chartWrap">
+        <h3>Gràfic — primera data seleccionada</h3>
+        <canvas id="chartCanvas"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -71,6 +71,8 @@ onMounted(() => {
         :options="categories"
         label="Categoria *"
         lazy-rules
+        option-label="name"
+        option-value="name"
         :rules="[val => !!val || 'Selecciona una categoria']"
       />
 

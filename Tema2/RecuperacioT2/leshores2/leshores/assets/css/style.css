@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Butterfly+Kids&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333;
+    background-image: url("../img/20082.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Butterfly Kids', cursive;
+    color: black;
+    text-align: center;
+    font-size: 26px;
+    padding: 15px;
+}
+
+header, main {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    width: 650px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+header { margin-bottom: 10px; }
+
+h1 { font-size: 60px; }
+
+main { text-align: center; }
+
+canvas {
+    font-family: 'Butterfly Kids', cursive;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    font-family: 'Butterfly Kids', cursive;
+    font-size: 22px;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    background: white;
+    transition: background 0.2s;
+}
+
+button:hover { background: #f0f0f0; }
+
+button.actiu {
+    background: #ffd700;
+    border-color: #e6b800;
+    font-weight: bold;
+}
+
+.seccio { margin: 15px 0; }
+
+/* Ex a) Sliders */
+#sliders {
+    padding: 10px 20px;
+}
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.slider-row label {
+    width: 70px;
+    text-align: right;
+    font-size: 22px;
+}
+
+.slider-row input[type="range"] {
+    width: 300px;
+    accent-color: #e67e22;
+    cursor: pointer;
+}
+
+.slider-row span {
+    width: 40px;
+    text-align: left;
+    font-size: 20px;
+    color: #555;
+}
+
+/* Ex b) Llista de timezones */
+#timezoneList {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 8px auto;
+    width: 90%;
+    background: white;
+    text-align: left;
+    padding: 5px;
+}
+
+#timezoneList li {
+    font-size: 16px;
+    padding: 3px 8px;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: monospace;
+}
+
+#timezoneList li:last-child { border-bottom: none; }
+
+/* Ex c) Play/Stop */
+#play  { background: #d4edda; border-color: #28a745; }
+#stop  { background: #f8d7da; border-color: #dc3545; }
+#play:hover { background: #c3e6cb; }
+#stop:hover { background: #f5c6cb; }
+
+ul, li { list-style: none; }
