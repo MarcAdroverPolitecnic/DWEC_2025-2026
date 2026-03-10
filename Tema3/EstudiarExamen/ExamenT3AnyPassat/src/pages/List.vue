@@ -28,7 +28,10 @@ const carregarDades = async () => {
     ])
     obres.value = resObres
     console.log(resObres)
+
     categories.value = resCategories
+    console.log(resCategories)
+
   } catch (error) {
     console.error("Error en la càrrega:", error)
   }
